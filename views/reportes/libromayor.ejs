@@ -1,0 +1,119 @@
+<div class="container">
+		<h5 class="center">Libro Mayor</h5><br>
+		<h5 class="center"><%=empresa.nombre%></h5>
+		<h6 class="center"><%=empresa.nit%></h5>
+</div>
+
+
+<% var listaAsientos = []%>
+
+<% librosDiario.forEach((libroDiario,i) =>{%>
+  <% libroDiario.asientos.forEach((asiento,j) =>{  %>
+    <% listaAsientos.push(asiento) %>
+  <%})%>
+<%})%>
+<style>
+table, th, td {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+  border-spacing: 0px;
+  padding: 0px;
+
+}
+</style>
+<div class="row">
+  <% cuentas.forEach((auxCuenta, k)=>{%>
+    <div class="col s6 m4">
+
+
+      <div class="card ">
+        <div class="card-content ">
+          <span class="card-title">
+            <%= auxCuenta.nombre%>
+          </span>
+          
+          <table class="centered" border="0" cellpadding="0" cellspacing="0">
+            <thead>
+              <tr>
+                <th>DEBE</th>
+                <th> </th>
+                <th>HABER</th>
+
+              </tr>
+            </thead>
+            <tbody>
+               <% var asientosCuenta = []%>
+              <%  listaAsientos.forEach((auxAsiento,l)=>{%>
+                <% if(auxAsiento.idCuenta.id == auxCuenta.id){%>
+                <% asientosCuenta.push(auxAsiento) %>
+                <%}%>
+              <%})%>
+                <%var sumaDebe = 0%>
+                <%var sumaHaber = 0%>
+                <% var listaLibroMayorDebe = []%>
+                <% var listaLibroMayorHaber = []%>
+              <% asientosCuenta.forEach((auxAsientoCuenta,p)=>{%>
+                                
+                  <% sumaDebe = sumaDebe + auxAsientoCuenta.debe%>
+                  <% sumaHaber = sumaHaber + auxAsientoCuenta.haber%>
+
+                  <% if(auxAsientoCuenta.debe != 0){%>
+
+                    <% listaLibroMayorDebe.push(auxAsientoCuenta) %>
+                  <%}else{%>
+
+                    <% listaLibroMayorHaber.push(auxAsientoCuenta) %>
+                  <%}%>
+
+              <% })%>
+
+
+                  <% if(listaLibroMayorDebe.length > listaLibroMayorHaber.length){%>
+
+                      <% listaLibroMayorDebe.forEach((auxAsientoMayor,m)=>{%>
+                        <tr>
+                          <td> <%= auxAsientoMayor.debe%></td>
+                          <td width="2"><hr style="width:3px; height:30px" /> </td>
+                          
+                          <% if(m < listaLibroMayorHaber.length){%>
+                            <td><%= listaLibroMayorHaber[m].haber%> </td>
+                            <%}else{%>
+                            <td>0</td>
+                          <%}%>
+                        </tr>
+                      <%})%>
+
+                  <%}else{%>
+
+                    <% listaLibroMayorHaber.forEach((auxAsientoMayor,m)=>{%>
+                      <tr>
+                        <% if(m < listaLibroMayorDebe.length){%>
+                          <td><%= listaLibroMayorDebe[m].debe%> </td>
+                          <%}else{%>
+                          <td>0</td>
+                        <%}%>
+                        <td width="2"><hr style="width:3px; height:30px" /> </td>
+                        <td> <%= auxAsientoMayor.haber%></td>
+                        
+                      </tr>
+                    <%})%>
+                  <%}%>
+
+
+              <tr class="grey lighten-3">
+                <td><%= sumaDebe%></td>
+                <td width="2"><hr style="width:3px; height:30px" /> </td>
+                <td><%= sumaHaber%></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+    <%})%>
+
+</div>
+
