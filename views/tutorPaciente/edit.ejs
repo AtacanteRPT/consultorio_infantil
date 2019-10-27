@@ -1,0 +1,32 @@
+<div class="">
+  <h1>New tutorPaciente</h1>
+
+  <div class="body">
+    <form class="" action="/tutorPaciente/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">createdAt</label>
+          <input type="number" name="createdAt" value="<%= element.createdAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">updatedAt</label>
+          <input type="number" name="updatedAt" value="<%= element.updatedAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="true">
+        </div>
+        <div class="">
+          <label for="">idPaciente</label>
+          <input type="number" name="idPaciente" value="<%= element.idPaciente %>" required="false">
+        </div>
+        <div class="">
+          <label for="">idTutor</label>
+          <input type="number" name="idTutor" value="<%= element.idTutor %>" required="false">
+        </div>
+      <button type="submit">Update tutorPaciente</button>
+    </form>
+    <br />
+    <a href="/tutorPaciente">Index</a>
+  </div>
+</div>

@@ -11,7 +11,8 @@ module.exports = {
 
     //   return res.view("pages/principal",{empresas : listEmpresas})
     // });
-  return res.view('pages/principal',{empresas:[]})
+  // return res.view('pages/principal',{empresas:[]})
+    return res.view('medico/index')
   },
 
   show: function (req, res, next) {

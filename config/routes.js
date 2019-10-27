@@ -44,6 +44,8 @@ module.exports.routes = {
   'POST /login': 'AuthController.login',
   '/logout': 'AuthController.salir',
 
+  'GET /principal/index': 'PrincipalController.index',
+
   'GET /registro': {
     view: 'login/registro'
   },

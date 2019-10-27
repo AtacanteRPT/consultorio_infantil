@@ -1,0 +1,23 @@
+<h1>Show paciente</h1>
+
+	<p>
+		<strong>createdAt:</strong>
+		<%= element.createdAt %>
+	</p>
+	<p>
+		<strong>updatedAt:</strong>
+		<%= element.updatedAt %>
+	</p>
+	<p>
+		<strong>id:</strong>
+		<%= element.id %>
+	</p>
+	<p>
+		<strong>idPersona:</strong>
+		<%= element.idPersona %>
+	</p>
+
+<br>
+<a href="/paciente/edit/<%= element.id %>">Edit</a>
+<a href="/paciente/create">New</a>
+<a href="/paciente">Back</a>

@@ -1,0 +1,72 @@
+<div class="">
+  <h1>New persona</h1>
+
+  <div class="body">
+    <form class="" action="/persona/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">createdAt</label>
+          <input type="number" name="createdAt" value="<%= element.createdAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">updatedAt</label>
+          <input type="number" name="updatedAt" value="<%= element.updatedAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="true">
+        </div>
+        <div class="">
+          <label for="">identificacion</label>
+          <input type="text" name="identificacion" value="<%= element.identificacion %>" required="false">
+        </div>
+        <div class="">
+          <label for="">nombre</label>
+          <input type="text" name="nombre" value="<%= element.nombre %>" required="false">
+        </div>
+        <div class="">
+          <label for="">img</label>
+          <input type="text" name="img" value="<%= element.img %>" required="false">
+        </div>
+        <div class="">
+          <label for="">paterno</label>
+          <input type="text" name="paterno" value="<%= element.paterno %>" required="false">
+        </div>
+        <div class="">
+          <label for="">materno</label>
+          <input type="text" name="materno" value="<%= element.materno %>" required="false">
+        </div>
+        <div class="">
+          <label for="">telefono</label>
+          <input type="number" name="telefono" value="<%= element.telefono %>" required="false">
+        </div>
+        <div class="">
+          <label for="">celular</label>
+          <input type="number" name="celular" value="<%= element.celular %>" required="false">
+        </div>
+        <div class="">
+          <label for="">cedula</label>
+          <input type="text" name="cedula" value="<%= element.cedula %>" required="false">
+        </div>
+        <div class="">
+          <label for="">expedido</label>
+          <input type="text" name="expedido" value="<%= element.expedido %>" required="false">
+        </div>
+        <div class="">
+          <label for="">fechaNacimiento</label>
+          <input type="text" name="fechaNacimiento" value="<%= element.fechaNacimiento %>" required="false">
+        </div>
+        <div class="">
+          <label for="">sexo</label>
+          <input type="text" name="sexo" value="<%= element.sexo %>" required="false">
+        </div>
+        <div class="">
+          <label for="">rol</label>
+          <input type="text" name="rol" value="<%= element.rol %>" required="false">
+        </div>
+      <button type="submit">Update persona</button>
+    </form>
+    <br />
+    <a href="/persona">Index</a>
+  </div>
+</div>

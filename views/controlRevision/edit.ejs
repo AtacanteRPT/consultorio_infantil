@@ -1,0 +1,36 @@
+<div class="">
+  <h1>New controlRevision</h1>
+
+  <div class="body">
+    <form class="" action="/controlRevision/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">createdAt</label>
+          <input type="number" name="createdAt" value="<%= element.createdAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">updatedAt</label>
+          <input type="number" name="updatedAt" value="<%= element.updatedAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="true">
+        </div>
+        <div class="">
+          <label for="">idMedico</label>
+          <input type="number" name="idMedico" value="<%= element.idMedico %>" required="false">
+        </div>
+        <div class="">
+          <label for="">idConsultorio</label>
+          <input type="number" name="idConsultorio" value="<%= element.idConsultorio %>" required="false">
+        </div>
+        <div class="">
+          <label for="">idRevisionMedica</label>
+          <input type="number" name="idRevisionMedica" value="<%= element.idRevisionMedica %>" required="false">
+        </div>
+      <button type="submit">Update controlRevision</button>
+    </form>
+    <br />
+    <a href="/controlRevision">Index</a>
+  </div>
+</div>

@@ -12,33 +12,6 @@ module.exports = {
 
   primaryKey: 'id',
   attributes: {
-
-    // updatedAt: false,
-    // createdAt:false,
-    id: {
-      type: 'number',
-      autoIncrement: true,
-    },
-    email: {
-      type: 'string',
-      required: false,
-      allowNull: true
-    },
-    nombre: {
-      type: 'string',
-      required: false,
-      allowNull: true
-    },
-    paterno: {
-      type: 'string',
-      required: false,
-      allowNull: true
-    },
-    materno: {
-      type: 'string',
-      required: false,
-      allowNull: true
-    },
     username: {
       type: 'string',
     },
@@ -49,7 +22,10 @@ module.exports = {
     rol: {
       type: 'string',
     },
-
+    idPersona: {
+      unique: true,
+      model: 'persona'
+    },
 
   },
   customToJSON: function () {

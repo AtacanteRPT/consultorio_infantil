@@ -1,0 +1,48 @@
+<div class="">
+  <h1>New revisionMedica</h1>
+
+  <div class="body">
+    <form class="" action="/revisionMedica/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">createdAt</label>
+          <input type="number" name="createdAt" value="<%= element.createdAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">updatedAt</label>
+          <input type="number" name="updatedAt" value="<%= element.updatedAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="true">
+        </div>
+        <div class="">
+          <label for="">lugar</label>
+          <input type="text" name="lugar" value="<%= element.lugar %>" required="false">
+        </div>
+        <div class="">
+          <label for="">peso</label>
+          <input type="number" name="peso" value="<%= element.peso %>" required="false">
+        </div>
+        <div class="">
+          <label for="">estatura</label>
+          <input type="number" name="estatura" value="<%= element.estatura %>" required="false">
+        </div>
+        <div class="">
+          <label for="">cabeza</label>
+          <input type="number" name="cabeza" value="<%= element.cabeza %>" required="false">
+        </div>
+        <div class="">
+          <label for="">fecha</label>
+          <input type="text" name="fecha" value="<%= element.fecha %>" required="false">
+        </div>
+        <div class="">
+          <label for="">idPaciente</label>
+          <input type="number" name="idPaciente" value="<%= element.idPaciente %>" required="false">
+        </div>
+      <button type="submit">Update revisionMedica</button>
+    </form>
+    <br />
+    <a href="/revisionMedica">Index</a>
+  </div>
+</div>

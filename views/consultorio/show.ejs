@@ -1,0 +1,27 @@
+<h1>Show consultorio</h1>
+
+	<p>
+		<strong>createdAt:</strong>
+		<%= element.createdAt %>
+	</p>
+	<p>
+		<strong>updatedAt:</strong>
+		<%= element.updatedAt %>
+	</p>
+	<p>
+		<strong>id:</strong>
+		<%= element.id %>
+	</p>
+	<p>
+		<strong>nombre:</strong>
+		<%= element.nombre %>
+	</p>
+	<p>
+		<strong>sigla:</strong>
+		<%= element.sigla %>
+	</p>
+
+<br>
+<a href="/consultorio/edit/<%= element.id %>">Edit</a>
+<a href="/consultorio/create">New</a>
+<a href="/consultorio">Back</a>

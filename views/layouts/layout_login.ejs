@@ -16,7 +16,7 @@
     <link href="floating-labels.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/styles/floating-labels.css">
-  <link rel="stylesheet" href="/styles/importer.css">
+  <link rel="stylesheet" href="/styles/main_dashboard.css">
   <!--STYLES END-->
 
   <style>
@@ -43,23 +43,7 @@
 
 <body>
 
-<% if(req.isAuthenticated()){%>
-
-  <div class="row">
-    <div class="col s12 m3">
-
-    </div>
-    <div class="col s12 m9">
-
-      <%- body %>
-    </div>
-  </div>
-
-<%}else{%>
 <%- body %>
-<%}%>
-
-
 
 </body>
 

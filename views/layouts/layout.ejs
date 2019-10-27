@@ -14,134 +14,181 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- Custom styles for this template -->
   <link href="/styles/dashboard.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="/styles/all.css"> -->
+  <link rel="stylesheet" href="/styles/main_dashboard.css">
+  <script defer src="/js/all.js"></script> <!--load all styles -->
 
-  <style>
-    header,
-    /* main, */
-
-    /* body, */
-
-    footer {
-      padding-left: 300px;
-    }
-
-    @media only screen and (max-width: 992px) {
-      header,
-      main,
-      footer {
-        padding-left: 0;
-      }
-    }
-
-  </style>
   
 </head>
 
 <body>
-  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">Consultorio Infantil</a>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
-        <a class="nav-link" href="/salir">Salir</a>
-      </li>
-    </ul>
-  </nav>
-  
-  <div class="container-fluid">
-    <div class="row">
-      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="/">
-                <span data-feather="home"></span>
-                Panel Admin <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file"></span>
-                Orders
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="shopping-cart"></span>
-                Products
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="users"></span>
-                Customers
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Reports
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="layers"></span>
-                Integrations
-              </a>
-            </li>
-          </ul>
-  
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Saved reports</span>
-            <a class="d-flex align-items-center text-muted" href="#">
-              <span data-feather="plus-circle"></span>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">
+        <img class="navbar-brand" src="/images/frasco_clinica.png" class="d-inline-block align-top" alt="" height="60">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">PRINCIPAL <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">LINKS</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
             </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Current month
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Last quarter
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Social engagement
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span data-feather="file-text"></span>
-                Year-end sale
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <%- body %>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    
+    <div class="container-fluid">
+    <nav class="sidebar" data-toggle="pill">
+      <ul class="nav">
+        <li class="nav-profile">
+          <div class="image">
+            <a href="javascript:;"><img src="https://findicons.com/files/icons/2799/flat_icons/256/admin.png" alt=""></a>
+          </div>
+          <div class="info">
+            <!-- INI NOMBRE ADMINISTRADOR -->
+            ADMIN
+            <small>Admin General</small>
+            <!--  FIN nombre-->
+         </div>
+        </li>
+      </ul>
+      
+     <ul class="nav flex-column">
+      <li class="nav-header active">Menu</li>
+      <li class="nav-item">
+       <a class="nav-link " href="javascript:;"><i class="fa fa-user-md"></i> Doctores<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link active" href="javascript:;"><i class="fa fa-cogs"></i>Pacientes</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="javascript:;"><i class="fa fa-cloud-download"></i>Resportes</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link" href="javascript:;">
+        <i class="fa fa-code"></i>
+        menu left 4
+       </a>
+      </li>
   
+      <li class="nav-item has-sub">
+       <a class="nav-link" data-toggle="collapse" href="#sub1" aria-expanded="false" aria-controls="sub1">
+        <i class="fa fa-align-left"></i> 
+        menu level 1
+       </a>
+       <ul class="sub collapse" id="sub1">
+        <li class="nav-item">
+         <a class="nav-link" href="javascript:;">
+          menu level 1.1
+         </a>
+        </li>
+        <li class="nav-item has-sub">
+         <a class="nav-link" data-toggle="collapse" href="#sub2" aria-expanded="false" aria-controls="sub2">
+          menu level 1.2
+         </a>
+          <ul  class="sub collapse" id="sub2">
+          <li class="nav-item">
+           <a class="nav-link" href="javascript:;">menu level 2.1</a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link" href="javascript:;">menu level 2.2</a>
+          </li>
+         </ul>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="javascript:;">menu level 1.3</a>
+        </li>
+       </ul>
+      </li>
+      
+      <li class="nav-item has-sub">
+       <a class="nav-link" data-toggle="collapse" href="#sub3" aria-expanded="false" aria-controls="sub3">
+        <i class="fa fa-align-left"></i> 
+        menu level 1
+       </a>
+       <ul class="sub collapse" id="sub3">
+        <li class="nav-item">
+         <a class="nav-link" href="javascript:;">
+          menu level 1.1
+         </a>
+        </li>
+        <li class="nav-item has-sub">
+         <a class="nav-link" data-toggle="collapse" href="#sub4" aria-expanded="false" aria-controls="sub4">
+          menu level 1.2
+         </a>
+          <ul  class="sub collapse" id="sub4">
+          <li class="nav-item">
+           <a class="nav-link" href="javascript:;">menu level 2.1</a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link" href="javascript:;">menu level 2.2</a>
+          </li>
+         </ul>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="javascript:;">menu level 1.3</a>
+        </li>
+       </ul>
+      </li>
+       
+      <li class="">
+       <a class="sidebar-minify" href="javascript:;">
+        <i class="fa fa-angle-double-left"></i>
+       </a>
+      </li>
+  
+     </ul>
+    </nav>
+      
+      
+    <!-- container close -->
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-          <script src="dashboard.js"></script>
-<% if(req.isAuthenticated()){%>
+    
 
+    <div class="row">
+      <div class="col-12 col-sm-2">
 
-<%}else{%>
-<%- body %>
-<%}%>
-  <!--SCRIPTS-->
-  <script src="/dependencies/sails.io.js"></script>
+      </div>
+      <div class="col-12 col-sm-10">
+        
+        <%- body %>
+      </div>
+    </div>
+      
+ 
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  
+  
+
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="/js/main_dashboard.js"></script>
   <!--SCRIPTS END-->
 </body>
 

@@ -1,0 +1,28 @@
+<div class="">
+  <h1>New paciente</h1>
+
+  <div class="body">
+    <form class="" action="/paciente/update" method="post">
+      <input name="id" value="<%= element.id %>" hidden="true" required>
+        <div class="">
+          <label for="">createdAt</label>
+          <input type="number" name="createdAt" value="<%= element.createdAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">updatedAt</label>
+          <input type="number" name="updatedAt" value="<%= element.updatedAt %>" required="false">
+        </div>
+        <div class="">
+          <label for="">id</label>
+          <input type="number" name="id" value="<%= element.id %>" required="true">
+        </div>
+        <div class="">
+          <label for="">idPersona</label>
+          <input type="number" name="idPersona" value="<%= element.idPersona %>" required="false">
+        </div>
+      <button type="submit">Update paciente</button>
+    </form>
+    <br />
+    <a href="/paciente">Index</a>
+  </div>
+</div>

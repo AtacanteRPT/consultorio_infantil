@@ -1,0 +1,111 @@
+<h1>persona</h1>
+
+
+<% if (result.length == 0) { %>
+  <h4>
+    0 persona
+  </h4>
+<% } else { %>
+<table>
+	<thead>
+    <th>#</th>
+		<th>id</th>
+			<th>createdAt</th>
+			<th>updatedAt</th>
+			<th>id</th>
+			<th>identificacion</th>
+			<th>nombre</th>
+			<th>img</th>
+			<th>paterno</th>
+			<th>materno</th>
+			<th>telefono</th>
+			<th>celular</th>
+			<th>cedula</th>
+			<th>expedido</th>
+			<th>fechaNacimiento</th>
+			<th>sexo</th>
+			<th>rol</th>
+
+		<th>created at</th>
+		<th>updated at</th>
+		<th colspan="3"></th>
+	</thead>
+
+	<tbody>
+		<% result.forEach((item, i) => { %>
+			<tr>
+				<td>
+					<%= (i + 1) %>
+				</td>
+				<td>
+					<%= item.id %>
+				</td>
+					<td>
+						<%= item.createdAt %>
+					</td>
+					<td>
+						<%= item.updatedAt %>
+					</td>
+					<td>
+						<%= item.id %>
+					</td>
+					<td>
+						<%= item.identificacion %>
+					</td>
+					<td>
+						<%= item.nombre %>
+					</td>
+					<td>
+						<%= item.img %>
+					</td>
+					<td>
+						<%= item.paterno %>
+					</td>
+					<td>
+						<%= item.materno %>
+					</td>
+					<td>
+						<%= item.telefono %>
+					</td>
+					<td>
+						<%= item.celular %>
+					</td>
+					<td>
+						<%= item.cedula %>
+					</td>
+					<td>
+						<%= item.expedido %>
+					</td>
+					<td>
+						<%= item.fechaNacimiento %>
+					</td>
+					<td>
+						<%= item.sexo %>
+					</td>
+					<td>
+						<%= item.rol %>
+					</td>
+				<td>
+					<%= item.createdAt %>
+				</td>
+				<td>
+					<%= item.updatedAt %>
+				</td>
+				<td>
+					<a href="/persona/show/<%= item.id %>">Show</a>
+				</td>
+				<td>
+					<a href="/persona/delete/<%= item.id %>">Delete</a>
+				</td>
+        <td>
+					<a href="/persona/edit/<%= item.id %>">Edit</a>
+				</td>
+			</tr>
+			<% }) %>
+	</tbody>
+</table>
+
+<% } %>
+
+<br>
+<a href="/persona/create">New</a>
