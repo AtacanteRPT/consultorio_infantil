@@ -14,7 +14,12 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     idPersona: {
       model: 'persona'
-    }
+    },
+    licencia: {
+      type: 'string',
+      required: false,
+      allowNull: true
+    },
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
