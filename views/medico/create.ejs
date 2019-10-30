@@ -1,28 +1,110 @@
-<div class="">
-	<h1>New medico</h1>
-	<h5>By sails-inverse-model</h5>
+<div class="container">
+	<br>
+	<h4 class="text-center">Registrar Medico</h4>
+	<h5 class="text-center">Llenar los datos con *</h5>
 
-	<div class="body">
-		<form class="" action="/medico/create" method="post">
-				<div class="">
-					<label for="">createdAt</label>
-					<input type="number" name="createdAt" value="" required="false">
+	<form>
+		<div class="form-group row">
+			<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Apellido Paterno</label>
+			<div class="col-sm-6">
+			<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="paterno">
+			</div>
+		</div>
+		<div class="form-group row">
+				<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Apellido Materno</label>
+				<div class="col-sm-6">
+				<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="materno">
 				</div>
-				<div class="">
-					<label for="">updatedAt</label>
-					<input type="number" name="updatedAt" value="" required="false">
+		</div>
+		<div class="form-group row">
+				<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Nombres</label>
+				<div class="col-sm-6">
+				<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="nombres">
 				</div>
-				<div class="">
-					<label for="">id</label>
-					<input type="number" name="id" value="" required="true">
+		</div>
+		<div class="form-group row">
+				<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Cedula</label>
+				<div class="col-sm-6">
+				<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="ci">
 				</div>
-				<div class="">
-					<label for="">idPersona</label>
-					<input type="number" name="idPersona" value="" required="false">
+		</div>
+		<div class="form-group row">
+				<label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Licencia Medica</label>
+				<div class="col-sm-6">
+				<input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="# licencia">
 				</div>
-			<button type="submit">Save medico</button>
-		</form>
-		<br />
-		<a href="/medico">Index</a>
-	</div>
+		</div>
+	</form>
+	<form class="needs-validation" novalidate>
+			<div class="form-row">
+			  <div class="col-md-6 mb-3">
+				<label for="validationCustom01">Apellido Paterno</label>
+				<input type="text" class="form-control" id="validationCustom01" placeholder="paterno"  required>
+				<div class="valid-feedback">
+				  Looks good!
+				</div>
+			  </div>
+			  <div class="col-md-6 mb-3">
+				<label for="validationCustom02">Apellido Materno</label>
+				<input type="text" class="form-control" id="validationCustom02" placeholder="materno"  required>
+				<div class="valid-feedback">
+				  Looks good!
+				</div>
+			  </div>
+			  <div class="col-md-6 mb-3">
+					<label for="validationCustom02">Nombres</label>
+					<input type="text" class="form-control" id="validationCustom02" placeholder="nombres"  required>
+					<div class="valid-feedback">
+					  Looks good!
+					</div>
+				  </div>
+			  <div class="col-md-6 mb-3">
+				<label for="validationCustomUsername">Username</label>
+				<div class="input-group">
+				  <div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroupPrepend">@</span>
+				  </div>
+				  <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+				  <div class="invalid-feedback">
+					Please choose a username.
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div class="form-row">
+			  <div class="col-md-6 mb-3">
+				<label for="validationCustom03">City</label>
+				<input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+				<div class="invalid-feedback">
+				  Please provide a valid city.
+				</div>
+			  </div>
+			  <div class="col-md-3 mb-3">
+				<label for="validationCustom04">State</label>
+				<input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+				<div class="invalid-feedback">
+				  Please provide a valid state.
+				</div>
+			  </div>
+			  <div class="col-md-3 mb-3">
+				<label for="validationCustom05">Zip</label>
+				<input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+				<div class="invalid-feedback">
+				  Please provide a valid zip.
+				</div>
+			  </div>
+			</div>
+			<div class="form-group">
+			  <div class="form-check">
+				<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+				<label class="form-check-label" for="invalidCheck">
+				  Agree to terms and conditions
+				</label>
+				<div class="invalid-feedback">
+				  You must agree before submitting.
+				</div>
+			  </div>
+			</div>
+			<button class="btn btn-primary" type="submit">Submit form</button>
+		  </form>
 </div>

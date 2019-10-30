@@ -18,7 +18,11 @@
   <link rel="stylesheet" href="/styles/main_dashboard.css">
   <script defer src="/js/all.js"></script> <!--load all styles -->
 
-  
+  <style>
+  body{
+    background-color: #f5f5f5;
+  }
+  </style>
 </head>
 
 <body>
@@ -56,8 +60,10 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">BUSCAR</button>
         </form>
+        <a class="nav-link" href="/auth/salir">SALIR <span class="sr-only">(current)</span></a>
+
       </div>
     </nav>
     
@@ -80,13 +86,13 @@
      <ul class="nav flex-column">
       <li class="nav-header active">Menu</li>
       <li class="nav-item">
-       <a class="nav-link " href="javascript:;"><i class="fa fa-user-md"></i> Doctores<span class="sr-only">(current)</span></a>
+       <a class="nav-link " href="/medico/index"><i class="fas fa-user-md"></i> Doctores<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-       <a class="nav-link active" href="javascript:;"><i class="fa fa-cogs"></i>Pacientes</a>
+       <a class="nav-link active" href="javascript:;"><i class="fas fa-cogs"></i>Pacientes</a>
       </li>
       <li class="nav-item">
-       <a class="nav-link" href="javascript:;"><i class="fa fa-cloud-download"></i>Resportes</a>
+       <a class="nav-link" href="javascript:;"><i class="fas fa-cloud-download"></i>Resportes</a>
       </li>
       <li class="nav-item">
        <a class="nav-link" href="javascript:;">
@@ -178,7 +184,7 @@
         <%- body %>
       </div>
     </div>
-      
+    
  
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
