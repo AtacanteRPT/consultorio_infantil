@@ -13,7 +13,9 @@
 	<thead>
 		<th>Nro</th>
 			<th>id</th>
-			<th>idPersona</th>
+			<th>Nombre</th>
+			<th>Paterno</th>
+			<th>Materno</th>
 
 		<th>Creado</th>
 		<th>Actualizado</th>
@@ -31,8 +33,14 @@
 						<%= item.id %>
 					</td>
 					<td>
-						<%= item.idPersona %>
+						<%= item.idPersona.nombre %>
 					</td>
+					<td>
+							<%= item.idPersona.paterno %>
+						</td>
+						<td>
+								<%= item.idPersona.materno %>
+							</td>
 					<td>
 						<%  var fecha = new Date(item.createdAt)%>
 						  <%= fecha.toLocaleDateString()  %>

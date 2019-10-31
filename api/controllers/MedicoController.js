@@ -5,9 +5,13 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 module.exports = {
+
+
     index: function(req, res, next) {
-        Medico.find().exec(function(err, list) {
+        Medico.find().populate('idPersona').exec(function(err, list) {
             if (err) return Error('Error');
+
+            sails.log(list)
             return res.view({
                 result: list
             });
