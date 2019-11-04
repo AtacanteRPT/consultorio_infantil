@@ -29,7 +29,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
       <a class="navbar-brand" href="#">
         <img class="navbar-brand" src="/images/frasco_clinica.png" class="d-inline-block align-top" alt="" height="60">
       </a>
@@ -40,31 +40,39 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">PRINCIPAL <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Principal <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">LINKS</a>
+            <a class="nav-link" href="#">Pacientes</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
+          <li class="nav-item">
+                <a class="nav-link" href="#">Reportes</a>
+              </li>
+  
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">BUSCAR</button>
-        </form>
-        <a class="nav-link" href="/auth/salir">SALIR <span class="sr-only">(current)</span></a>
+        <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span style="font-size: 1em; color: white;">
+                        <i class="fas fa-user-graduate"></i>
+                </span> 
+                <% if(req.isAuthenticated()){%>
+
+                    <%= req.user.idPersona.nombre%> <%= req.user.idPersona.paterno%> <%= req.user.idPersona.materno%>
+                <%}%>
+                
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="#">Pacientes</a>
+            <a class="dropdown-item" href="#">Reportes</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/auth/salir">Salir</a>
+        </div>
+        </div>
+       
 
       </div>
     </nav>
@@ -83,45 +91,21 @@
                   <span data-feather="home"></span>
                   Pricipal <span class="sr-only">(current)</span>
                 </a>
+                <a class="nav-link active" href="/paciente/index">
+                  <span style="font-size: 1em; color: black;">
+                      <i class="fas fa-notes-medical"></i>
+                    </span>
+                <span data-feather="home"></span>
+                Pacientes <span class="sr-only">(current)</span>
+              </a>
+
               </li>
-              <li class="nav-item">
-                  
-                  <a class="nav-link active" href="/medico/index">
-                      <span style="font-size: 1em; color: black;">
-                          <i class="fas fa-user-md"></i>
-                        </span>
-                    <span data-feather="home"></span>
-                    Medicos <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Products
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="users"></span>
-                  Customers
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Integrations
-                </a>
-              </li>
+         
+
             </ul>
     
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
+              <span>Reportes Generales</span>
               <a class="d-flex align-items-center text-muted" href="#">
                 <span data-feather="plus-circle"></span>
               </a>
@@ -130,27 +114,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="file-text"></span>
-                  Current month
+                  Pacientes
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Last quarter
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Social engagement
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Year-end sale
-                </a>
-              </li>
+
             </ul>
           </div>
         </nav>

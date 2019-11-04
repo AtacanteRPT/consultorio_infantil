@@ -13,14 +13,27 @@ module.exports.policies = {
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions, unless overridden.       *
-  * (`true` allows public access)                                            *
+  * (`true` allows public access)                                            *k
   *                                                                          *
   ***************************************************************************/
 
-  PrincipalController: {
-    '*': ['AccesoPoliticaAlumno']
+//  '*': 'AccesoPoliticaAdmin','AccesoPoliticaAdmin'
+  MedicoController:{
+  '*':'AccesoPoliticaAdmin'
   },
+  // PrincipalController:{
+  //   '*':'AccesoPoliticaAdmin',
+  //   '*':'AccesoPoliticaMedico'
+  // },
+        AuthController:{
+          '*':true
+        },
+PacienteController:{
+  '*':'AccesoPoliticaMedico'
+},
+  PanelmedicoController:{
+    '*':'AccesoPoliticaMedico'
+  }
 
-  // '*': true,
 
 };

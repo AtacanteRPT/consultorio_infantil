@@ -1,23 +1,100 @@
-<h1>Show medico</h1>
+<div class="container">
 
-	<p>
-		<strong>createdAt:</strong>
-		<%= element.createdAt %>
-	</p>
-	<p>
-		<strong>updatedAt:</strong>
-		<%= element.updatedAt %>
-	</p>
-	<p>
-		<strong>id:</strong>
-		<%= element.id %>
-	</p>
-	<p>
-		<strong>idPersona:</strong>
-		<%= element.idPersona %>
-	</p>
+	<br>
+	
+	<div class="card border-dark text-center">
+		<div class="card-header border-dark">
+			<h4 class="text-center">Mostrar medico</h4>
+		</div>
+		<div class="card-body border-dark">
+		  <h5 class="card-title">Datos Personales </h5>
+		  <p class="card-text"></p>
+		  			    <fieldset disabled>
 
-<br>
-<a href="/medico/edit/<%= element.id %>">Edit</a>
-<a href="/medico/create">New</a>
-<a href="/medico">Back</a>
+			<div class="form-row">
+			  <div class="col-md-4 mb-3">
+				<label for="validationCustom01">Nombres</label>
+				<input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="<%- element.idPersona.nombre%>" required>
+				<div class="valid-feedback">
+				  Looks good!
+				</div>
+			  </div>
+			  <div class="col-md-4 mb-3">
+				<label for="validationCustom02">A.Paterno</label>
+				<input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="<%- element.idPersona.paterno%>" required>
+				<div class="valid-feedback">
+				  Looks good!
+				</div>
+			  </div>
+			  <div class="col-md-4 mb-3">
+				<label for="validationCustom02">A.Materno</label>
+				<input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="<%- element.idPersona.materno%>" required>
+				<div class="valid-feedback">
+				  Looks good!
+				</div>
+			  </div>
+			</div>
+			<div class="form-row">
+			  <div class="col-md-6 mb-3">
+				<label for="validationCustom03">Fecha Nacimiento</label>
+				<input type="text" class="form-control" id="validationCustom03" value="<%- element.idPersona.fechaNacimiento%>" required>
+				<div class="invalid-feedback">
+				  Please provide a valid city.
+				</div>
+			  </div>
+			  <div class="col-md-3 mb-3">
+				<label for="validationCustom04">Cedula</label>
+				<input type="number" class="form-control" id="validationCustom04" value="<%- element.idPersona.cedula%>" required>
+				<div class="invalid-feedback">
+				  Please provide a valid state.
+				</div>
+			  </div>
+			  <div class="col-md-3 mb-3">
+				<label for="validationCustom05">Licencia Medica</label>
+				<input type="text" class="form-control" id="validationCustom05" value="<%- element.licencia%>" required>
+				<div class="invalid-feedback">
+				  Please provide a valid zip.
+				</div>
+			  </div>
+			</div>
+		</fieldset>
+			<div class="form-group">
+			  <div class="form-check">
+				<label class="form-check-label" for="invalidCheck">
+					Ultima vez Actualizado <br>
+				</label>
+				  <%  var fecha = new Date(element.idPersona.updatedAt)%>
+						 
+				  <p> <%= fecha.toLocaleDateString()  %></p>
+			  </div>
+			</div>
+			<a class="btn btn-primary" href="/medico/editar/<%= element.id %>" ><span style="font-size: 1em; color: white;">
+					<i class="fas fa-edit"></i>
+				</span> Actualizar</a>
+		  
+
+		</div>
+		<div class="card-footer border-dark text-muted">
+				<div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+						<a href="/medico/index" class="btn btn-secondary">
+							<span style="font-size: 1em; color: white;">
+								<i class="fas fa-arrow-circle-left"></i>
+							</span>
+						</a>
+						<a href="/medico/editar/<%= element.id %>" class="btn btn-secondary">
+							<span style="font-size: 1em; color: white;">
+									<i class="fas fa-edit"></i>
+							</span>
+						</a>
+					<a href="/medico/crear" class="btn btn-secondary">
+						<span style="font-size: 1em; color: white;">
+								<i class="fas fa-plus-circle"></i>
+						</span>
+					</a>
+					</div>
+		</div> 
+	</div>
+	<br>
+
+
+</div>

@@ -1,28 +1,108 @@
-<div class="">
-  <h1>New medico</h1>
+<div class="container">
 
-  <div class="body">
-    <form class="" action="/medico/update" method="post">
-      <input name="id" value="<%= element.id %>" hidden="true" required>
-        <div class="">
-          <label for="">createdAt</label>
-          <input type="number" name="createdAt" value="<%= element.createdAt %>" required="false">
+    <br>
+    
+    <div class="card border-primary text-center">
+      <div class="card-header border-primary">
+        <h4 class="text-center">Editar medico</h4>
+      </div>
+      <div class="card-body border-primary">
+        <h5 class="card-title">Datos Personales </h5>
+        <p class="card-text"></p>
+        <form action="/medico/actualizar" method="POST">  
+          <input type="number" name="idPer" value="<%- element.idPersona.id %>" hidden>
+          <input type="number" name="idMedico" value="<%- element.id %>" hidden>
+
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+          <label for="validationCustom01">Nombres</label>
+          <input type="text" class="form-control" name="nombre" id="validationCustom01" placeholder="Nombres" value="<%- element.idPersona.nombre%>" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          </div>
+          <div class="col-md-4 mb-3">
+          <label for="validationCustom02">A.Paterno</label>
+          <input type="text" class="form-control" name="paterno" id="validationCustom02" placeholder="Paterno" value="<%- element.idPersona.paterno%>" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          </div>
+          <div class="col-md-4 mb-3">
+          <label for="validationCustom02">A.Materno</label>
+          <input type="text" class="form-control" name="materno" id="validationCustom02" placeholder="Materno" value="<%- element.idPersona.materno%>" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          </div>
         </div>
-        <div class="">
-          <label for="">updatedAt</label>
-          <input type="number" name="updatedAt" value="<%= element.updatedAt %>" required="false">
+
+        <% var auxDate = new Date(element.idPersona.fechaNacimiento) %>
+        <h4>MES : <%=auxDate.getMonth()%></h4>
+        <% var inicialMes = (auxDate.getMonth()+1)<=9? '0':'' %>
+        <% var inicialDia = (auxDate.getDate())<=9? '0':'' %>
+        <% var auxFecha =  auxDate.getFullYear()+'-'+ inicialMes + (auxDate.getMonth()+1)+'-'+inicialDia+ (auxDate.getDate()) %>
+        <h5><%= auxFecha %></h5>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+          <label for="validationCustom03">Fecha Nacimiento</label>
+          <input type="date" class="form-control" name="fechaNacimiento" id="validationCustom03" value="<%= auxFecha %>" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+          </div>
+          <div class="col-md-3 mb-3">
+          <label for="validationCustom04">Cedula</label>
+          <input type="text" class="form-control" name="cedula" id="validationCustom04" value="<%- element.idPersona.cedula%>" required>
+          <div class="invalid-feedback">
+            Please provide a valid state.
+          </div>
+          </div>
+          <div class="col-md-3 mb-3">
+          <label for="validationCustom05">Licencia Medica</label>
+          <input type="text" class="form-control" name="licencia" id="validationCustom05" value="<%- element.licencia%>" required>
+          <div class="invalid-feedback">
+            Please provide a valid zip.
+          </div>
+          </div>
         </div>
-        <div class="">
-          <label for="">id</label>
-          <input type="number" name="id" value="<%= element.id %>" required="true">
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label" for="invalidCheck">
+              Ultima vez Actualizado <br>
+            </label>
+            <%  var fecha = new Date(element.idPersona.updatedAt)%>
+            
+            <p> <%= fecha.toLocaleDateString()  %></p>
+          </div>
         </div>
-        <div class="">
-          <label for="">idPersona</label>
-          <input type="number" name="idPersona" value="<%= element.idPersona %>" required="false">
-        </div>
-      <button type="submit">Update medico</button>
-    </form>
-    <br />
-    <a href="/medico">Index</a>
+        <button class="btn btn-success" type="submit" >Actualizar</button>
+        
+      </form>
+  
+      </div>
+      <div class="card-footer border-primary text-muted">
+          <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+              <a href="/medico/index" class="btn btn-secondary">
+                <span style="font-size: 1em; color: white;">
+                  <i class="fas fa-arrow-circle-left"></i>
+                </span>
+              </a>
+              <a href="/medico/editar/<%= element.id %>" class="btn btn-secondary">
+                <span style="font-size: 1em; color: white;">
+                    <i class="fas fa-edit"></i>
+                </span>
+              </a>
+            <a href="/medico/crear" class="btn btn-secondary">
+              <span style="font-size: 1em; color: white;">
+                  <i class="fas fa-plus-circle"></i>
+              </span>
+            </a>
+            </div>
+      </div> 
+    </div>
+    <br>
+  
+  
   </div>
-</div>
+  

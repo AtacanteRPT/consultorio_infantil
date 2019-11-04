@@ -30,13 +30,6 @@ module.exports.routes = {
   'GET /': 'AuthController.loguearse',
   'GET /salir': 'AuthController.salir',
 
-  'GET /pet/create': {
-    view: 'Pet/create'
-  },
-
-  'GET pet/create': {
-    view: 'Pet/create'
-  },
 
   // 'GET /login': {
   //   view: 'login/login'
@@ -50,13 +43,19 @@ module.exports.routes = {
     view: 'login/registro'
   },
 
-  'GET /registro': {
-    view: 'login/registro'
-  },
-
   'GET /medico/crear': {
     view: 'medico/create'
   },
+  'GET /medico/mostrar/:id': 'MedicoController.show',
+  'GET /medico/editar/:id': 'MedicoController.edit',
+  // 'GET /medico/actualizar/:id': 'MedicoController.update',
+  'GET /medico/eliminar/:id': 'MedicoController.delete',
+
+
+
+
+
+
   
   /***************************************************************************
    *                                                                          *

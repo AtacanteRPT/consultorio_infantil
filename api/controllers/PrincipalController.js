@@ -12,48 +12,19 @@ module.exports = {
     //   return res.view("pages/principal",{empresas : listEmpresas})
     // });
   // return res.view('pages/principal',{empresas:[]})
-    // return res.view('medico/index')
-    return res.redirect('/medico/index')
+
+  if(req.user.rol=='medico'){
+    return res.view('pages/homepage',{layout:'layouts/layout_medico'})
+
+  }
+  if(req.user.rol=='admin'){
+    return res.view('pages/principal')
+
+  }
+    // return res.view('pages/principal')
+    // return res.redirect('/medico/index')
   },
 
-  show: function (req, res, next) {
-    Pet.findOneById(req.param('id'), function Founded(err, value) {
-      if (err) {
-        return next(err);
-      }
-      res.view({
-        element: value
-      });
-    });
-  },
-
-  edit: function (req, res, next) {
-    Pet.findOne(req.param('id'), function Founded(err, value) {
-      if (err) {
-        return next(err);
-      }
-      res.view({
-        element: value
-      });
-    });
-  },
-
-  update: function (req, res, next) {
-    Pet.update(req.param('id'), req.body, function Update(err, value) {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect('Pet/show/' + req.param('id'));
-    });
-  },
-
-  delete: function (req, res, next) {
-    Pet.destroy(req.param('id'), function Update(err, value) {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect('/Pet');
-    });
-  },
+  
 
 };

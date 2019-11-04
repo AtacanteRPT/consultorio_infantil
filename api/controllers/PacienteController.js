@@ -9,7 +9,8 @@ module.exports = {
         Paciente.find().exec(function(err, list) {
             if (err) return Error('Error');
             return res.view({
-                result: list
+                result: list,
+                layout:'layouts/layout_medico'
             });
         });
     },
@@ -20,7 +21,8 @@ module.exports = {
                 return next(err);
             }
             res.view({
-                element: value
+                element: value,
+                layout:'layouts/layout_medico'
             });
         });
     },
@@ -31,7 +33,8 @@ module.exports = {
                 return next(err);
             }
             res.view({
-                element: value
+                element: value,
+                layout:'layouts/layout_medico'
             });
         });
     },

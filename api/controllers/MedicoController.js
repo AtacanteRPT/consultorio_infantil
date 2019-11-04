@@ -7,54 +7,87 @@
 module.exports = {
 
 
-    index: function(req, res, next) {
-        Medico.find().populate('idPersona').exec(function(err, list) {
+    index: function (req, res, next) {
+        Medico.find().populate('idPersona').exec(function (err, list) {
             if (err) return Error('Error');
 
-            sails.log(list)
+            sails.log('LISTA', list)
             return res.view({
                 result: list
             });
         });
     },
 
-    show: function(req, res, next) {
-        Medico.findOneById(req.param('id'), function Founded(err, value) {
-            if (err) {
-                return next(err);
-            }
+    show: async function (req, res, next) {
+        try {
+
+            var value = await Medico.find(req.param('id')).populate('idPersona');
+            sails.log('Value Show',value)
             res.view({
-                element: value
+                element: value[0]
+            });
+        } catch (err) {
+
+            return next(err);
+
+        }
+
+    },
+
+    edit: async function (req, res) {
+        try {
+
+            var value = await Medico.find(req.param('id')).populate('idPersona');
+            sails.log('Value EDIT',value)
+            res.view({
+                element: value[0]
+            });
+        } catch (err) {
+
+            return res.serverError(err);
+
+        }
+    },
+
+    actualizar: function (req, res) {
+        sails.log('Body opara actualizar:', req.body)
+
+        // try {
+
+        //     await Persona.update(req.param('idPer'),req.body);
+
+
+        //     await Medico.update({id:parseInt(req.param('idMedico'))},{licencia:req.param('licencia')});
+
+        //     return res.redirect('/medico/mostrar/' + req.param('idMedico'));
+
+        // } catch (err) {
+
+        //         return res.serverError(err);
+
+        // }
+
+        var idMedico = req.param('idMedico');
+        var auxLicencia = req.param('licencia')
+        Persona.update(req.param('idPer'), req.body, function Update(err, value) {
+            if (err) {
+                return serverError(err);
+            }
+            Medico.update(idMedico).set({licencia: auxLicencia}).exec(function (err, datoMedico) {
+                if (err) {
+                    return serverError(err);
+                }
+                return res.redirect('/medico/mostrar/' + idMedico);
             });
         });
     },
 
-    edit: function(req, res, next) {
-        Medico.findOne(req.param('id'), function Founded(err, value) {
-            if (err) {
-                return next(err);
-            }
-            res.view({
-                element: value
-            });
-        });
-    },
-
-    update: function(req, res, next) {
-        Medico.update(req.param('id'), req.body, function Update(err, value) {
-            if (err) {
-                return next(err);
-            }
-            return res.redirect('medico/show/' + req.param('id'));
-        });
-    },
-
-    delete: function(req, res, next) {
+    delete: function (req, res, next) {
         Medico.destroy(req.param('id'), function Update(err, value) {
             if (err) {
                 return next(err);
             }
-            return res.redirect('/medico');
+            return res.redirect('/medico/index');
         });
     },
 

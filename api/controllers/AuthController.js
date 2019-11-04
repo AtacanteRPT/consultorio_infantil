@@ -38,8 +38,11 @@ module.exports = {
 
 
         if (req.isAuthenticated()) {
-          console.log("Redireccionando a /principal/index")
-          res.redirect("/principal/index");
+          console.log("Redireccionando a /principal/index",req.user)
+           
+            res.redirect("/principal/index");
+
+          
         } else {
 
           res.view("login/login");

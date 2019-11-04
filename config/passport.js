@@ -4,10 +4,14 @@ const passport = require('passport'),
 passport.serializeUser(function (user, cb) {
   cb(null, user.id);
 });
-passport.deserializeUser(function (id, cb) {
-  Usuario.findOne(id, function (err, user) {
+passport.deserializeUser(function (id, cb) { 
+
+  Usuario.findOne(id).populate('idPersona').exec(function(err,user){
     cb(err, user);
   });
+  // Usuario.findOne(id, function (err, user) {
+  //   cb(err, user);
+  // });
 });
 passport.use(new LocalStrategy({
   usernameField: 'username',
