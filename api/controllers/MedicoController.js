@@ -51,22 +51,6 @@ module.exports = {
 
     actualizar: function (req, res) {
         sails.log('Body opara actualizar:', req.body)
-
-        // try {
-
-        //     await Persona.update(req.param('idPer'),req.body);
-
-
-        //     await Medico.update({id:parseInt(req.param('idMedico'))},{licencia:req.param('licencia')});
-
-        //     return res.redirect('/medico/mostrar/' + req.param('idMedico'));
-
-        // } catch (err) {
-
-        //         return res.serverError(err);
-
-        // }
-
         var idMedico = req.param('idMedico');
         var auxLicencia = req.param('licencia')
         Persona.update(req.param('idPer'), req.body, function Update(err, value) {

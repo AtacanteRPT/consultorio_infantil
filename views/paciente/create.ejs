@@ -1,28 +1,51 @@
-<div class="">
-	<h1>New paciente</h1>
-	<h5>By sails-inverse-model</h5>
+<div class="container">
+	<br>
+	<div class="card text-dark border-success mb-3" style="max-width: 100%">
+			<div class="card-header border-success">Nuevo Paciente</div>
+			<div class="card-body border-success">
+			  <h5 class="card-title">Registrar Paciente</h5>
+			  <p class="card-text">Llenar los datos con *</p>
 
-	<div class="body">
-		<form class="" action="/paciente/create" method="post">
-				<div class="">
-					<label for="">createdAt</label>
-					<input type="number" name="createdAt" value="" required="false">
+			  <form method="POST" action="/persona/crear">
+				<input type="text" name="rol" value="paciente" hidden>
+				<div class="form-group row">
+					<label  class="col-sm-2 col-form-label col-form-label-sm">Apellido Paterno</label>
+					<div class="col-sm-6">
+					<input type="text" name='paterno' class="form-control form-control-sm"  placeholder="paterno">
+					</div>
 				</div>
-				<div class="">
-					<label for="">updatedAt</label>
-					<input type="number" name="updatedAt" value="" required="false">
+				<div class="form-group row">
+						<label  class="col-sm-2 col-form-label col-form-label-sm">Apellido Materno</label>
+						<div class="col-sm-6">
+						<input type="text" name="materno" class="form-control form-control-sm"  placeholder="materno">
+						</div>
 				</div>
-				<div class="">
-					<label for="">id</label>
-					<input type="number" name="id" value="" required="true">
+				<div class="form-group row">
+						<label  class="col-sm-2 col-form-label col-form-label-sm">Nombres</label>
+						<div class="col-sm-6">
+						<input type="text" name="nombre" class="form-control form-control-sm"  placeholder="nombres">
+						</div>
 				</div>
-				<div class="">
-					<label for="">idPersona</label>
-					<input type="number" name="idPersona" value="" required="false">
+				<div class="form-group row">
+						<label  class="col-sm-2 col-form-label col-form-label-sm">Cedula</label>
+						<div class="col-sm-6">
+						<input type="text" name="cedula" class="form-control form-control-sm"  placeholder="ci">
+						</div>
 				</div>
-			<button type="submit">Save paciente</button>
-		</form>
-		<br />
-		<a href="/paciente">Index</a>
-	</div>
+				<div class="form-group row">
+						<label  class="col-sm-2 col-form-label col-form-label-sm">Fecha Nacimiento</label>
+						<div class="col-sm-6">
+						<input type="date" name="fechaNacimiento" class="form-control form-control-sm"  placeholder="">
+						</div>
+				</div>
+		
+				<button type="submit" class="btn btn-primary">ENVIAR</button>
+		
+			</form>
+			</div>
+		  </div>
+	<!-- <h4 class="text-center">Registrar Medico</h4>
+	<h5 class="text-center">Llenar los datos con *</h5> -->
+
+
 </div>

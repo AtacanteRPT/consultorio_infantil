@@ -33,28 +33,30 @@ module.exports = {
             // console.log('persons : ' + datoPersona.nombre)
             switch (rol) {
                 case 'paciente':
-                    Alumno.create({
+                    Paciente.create({
                         idPersona: datoPersona.id
                     }).exec(function(err, creado) {
                         if (err) {
                             return res.serverError(err);
                         }
 
-                        usuario = {
+                        // usuario = {
 
-                            username: datoPersona.id + datoPersona.nombre,
-                            password: datoPersona.id + datoPersona.nombre,
-                            codigo_qr: datoPersona.nombre + " " + datoPersona.paterno + " " + datoPersona.materno,
-                            rol: rol,
-                            idPersona: datoPersona.id
-                        }
+                        //     username: datoPersona.id + datoPersona.nombre,
+                        //     password: datoPersona.id + datoPersona.nombre,
+                        //     codigo_qr: datoPersona.nombre + " " + datoPersona.paterno + " " + datoPersona.materno,
+                        //     rol: rol,
+                        //     idPersona: datoPersona.id
+                        // }
 
-                        Usuario.create(usuario).exec(function(err, creado) {
-                            if (err) {
-                                return res.serverError(err);
-                            }
-                            res.redirect('/medico/index');
-                        })
+                        // Usuario.create(usuario).exec(function(err, creado) {
+                        //     if (err) {
+                        //         return res.serverError(err);
+                        //     }
+                        //     res.redirect('/medico/index');
+                        // })
+                        res.redirect('/paciente/index');
+
                     })
                     break;
                 case 'medico':

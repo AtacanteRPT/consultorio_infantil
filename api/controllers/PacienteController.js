@@ -5,8 +5,9 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 module.exports = {
+    
     index: function(req, res, next) {
-        Paciente.find().exec(function(err, list) {
+        Paciente.find().populate('idPersona').exec(function(err, list) {
             if (err) return Error('Error');
             return res.view({
                 result: list,
@@ -15,36 +16,47 @@ module.exports = {
         });
     },
 
-    show: function(req, res, next) {
-        Paciente.findOneById(req.param('id'), function Founded(err, value) {
-            if (err) {
-                return next(err);
-            }
+    show: async function(req, res, next) {
+        try {
+
+            var value = await Paciente.find(req.param('id')).populate('idPersona');
+            sails.log('Value Show',value)
             res.view({
-                element: value,
+                element: value[0],
                 layout:'layouts/layout_medico'
             });
-        });
+        } catch (err) {
+
+            return next(err);
+
+        }
     },
 
-    edit: function(req, res, next) {
-        Paciente.findOne(req.param('id'), function Founded(err, value) {
-            if (err) {
-                return next(err);
-            }
+    edit: async function(req, res, next) {
+        try {
+
+            var value = await Paciente.find(req.param('id')).populate('idPersona');
+            sails.log('Value Show',value)
             res.view({
-                element: value,
+                element: value[0],
                 layout:'layouts/layout_medico'
             });
-        });
+        } catch (err) {
+
+            return next(err);
+
+        }
     },
 
-    update: function(req, res, next) {
-        Paciente.update(req.param('id'), req.body, function Update(err, value) {
+    actualizar: function(req, res, next) {
+        sails.log('Body opara actualizar:', req.body)
+        var idPaciente = req.param('idPaciente');
+        // var auxLicencia = req.param('licencia')
+        Persona.update(req.param('idPer'), req.body, function Update(err, value) {
             if (err) {
-                return next(err);
+                return serverError(err);
             }
-            return res.redirect('paciente/show/' + req.param('id'));
+            return res.redirect('/paciente/mostrar/' + idPaciente);
         });
     },
 

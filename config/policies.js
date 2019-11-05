@@ -25,15 +25,15 @@ module.exports.policies = {
   //   '*':'AccesoPoliticaAdmin',
   //   '*':'AccesoPoliticaMedico'
   // },
-        AuthController:{
-          '*':true
-        },
+  AuthController:{
+    '*':true
+  },
 PacienteController:{
   '*':'AccesoPoliticaMedico'
 },
-  PanelmedicoController:{
-    '*':'AccesoPoliticaMedico'
-  }
+//   PanelmedicoController:{
+//     '*':'AccesoPoliticaMedico'
+//   }
 
 
 };

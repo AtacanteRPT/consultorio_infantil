@@ -48,10 +48,21 @@ module.exports.routes = {
   },
   'GET /medico/mostrar/:id': 'MedicoController.show',
   'GET /medico/editar/:id': 'MedicoController.edit',
-  // 'GET /medico/actualizar/:id': 'MedicoController.update',
   'GET /medico/eliminar/:id': 'MedicoController.delete',
 
 
+  'GET /paciente/crear': {
+    view: 'paciente/create',locals: {
+      layout: 'layouts/layout_medico'
+    }
+  },
+  'GET /paciente/mostrar/:id': 'PacienteController.show',
+  'GET /paciente/editar/:id': 'PacienteController.edit',
+  'GET /paciente/eliminar/:id': 'PacienteController.delete',
+
+  'GET /paciente/historial': {
+    view: 'paciente/historial'
+  },
 
 
 
