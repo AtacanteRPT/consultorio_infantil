@@ -1,155 +1,273 @@
 <br>
 <div class="card bg-light">
-        <div class="card-header">Historial Paciente</div>
-        <div class="card-body">
-          <h5 class="card-title"> Toto Torrez Garay </h5>
+  <div class="card-header">Historial Paciente
 
 
-          <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <th colspan="3" scope="col">11 Novibiembre 2019</th>
-          
-                    <th scope="col">Alterar</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colspan="3">
-                            <form>
-                            <div class="row">
-                                <div class="col">
-                                        <label for="inputEmail4">Consultorio</label>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <%= paciente.idPersona.nombre%> <%= paciente.idPersona.paterno%> <%= paciente.idPersona.materno%>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        <span style="font-size: 1em; color: white;">
+          <i class="fas fa-plus"></i>
+        </span>
+        Nueva Consulta
+      </button>
+    </h5>
 
-                                <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
-                                </div>
-                                <div class="col">
-                                        <label for="inputEmail4">Lugar</label>
-                                <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
-                                </div>
-                            </div>
-                            </form>
-                    </td>
-                    <td>
 
-                    </td>
-                  </tr>
-                  <tr>
-                    <th colspan="2">Peso</th>
-                    <td colspan="2" >3 kg</td>
-                  </tr>
-                  <tr>
-                        <th colspan="2">Altura</th>
-                        <td colspan="2" >56 cm</td>
-                      </tr>
-                  <tr>
-                        <th colspan="2">Cabeza</th>
-                        <td colspan="2" >45 cm</td>
-                      </tr>
-                      <tr class="bg-danger text-white">
-                          <td>Estado</td>
-                          <td colspan="3"> Desnutrido</td>
-                      </tr>
+    <div class="row">
 
-                </tbody>
-              </table>
-
-              <table class="table">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th colspan="3" scope="col">12 Diciembre 2019</th>
-              
-                        <th scope="col">Alterar</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td colspan="3">
-                                <form>
-                                <div class="row">
-                                    <div class="col">
-                                            <label for="inputEmail4">Consultorio</label>
-    
-                                    <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
-                                    </div>
-                                    <div class="col">
-                                            <label for="inputEmail4">Lugar</label>
-                                    <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
-                                    </div>
-                                </div>
-                                </form>
-                        </td>
-                        <td>
-    
-                        </td>
-                      </tr>
-                      <tr>
-                        <th colspan="2">Peso</th>
-                        <td colspan="2" >10 kg</td>
-                      </tr>
-                      <tr>
-                            <th colspan="2">Altura</th>
-                            <td colspan="2" >58 cm</td>
-                          </tr>
-                      <tr>
-                            <th colspan="2">Cabeza</th>
-                            <td colspan="2" >47 cm</td>
-                          </tr>
-                          <tr class="bg-success text-white">
-                              <td>Estado</td>
-                              <td colspan="3"> Saludable</td>
-                          </tr>
-    
-                    </tbody>
-                  </table>
-                  <table class="table">
-                        <thead class="thead-dark">
-                          <tr>
-                            <th colspan="3" scope="col">20 Marzo 2020</th>
-                  
-                            <th scope="col">Alterar</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td colspan="3">
-                                    <form>
-                                    <div class="row">
-                                        <div class="col">
-                                                <label for="inputEmail4">Consultorio</label>
+        <% historial.forEach((item, i) => { %>
         
-                                        <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
-                                        </div>
-                                        <div class="col">
-                                                <label for="inputEmail4">Lugar</label>
-                                        <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
-                                        </div>
-                                    </div>
-                                    </form>
-                            </td>
-                            <td>
-        
-                            </td>
-                          </tr>
-                          <tr>
-                            <th colspan="2">Peso</th>
-                            <td colspan="2" > 14 kg</td>
-                          </tr>
-                          <tr>
-                                <th colspan="2">Altura</th>
-                                <td colspan="2" >120 cm</td>
-                              </tr>
-                          <tr>
-                                <th colspan="2">Cabeza</th>
-                                <td colspan="2" >57 cm</td>
-                              </tr>
-                              <tr class="bg-warning text-white">
-                                  <td>Estado</td>
-                                  <td colspan="3"> Normal</td>
-                              </tr>
-        
-                        </tbody>
-                      </table>
-        </div>
+          <div class="col-sm-6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th colspan="3" scope="col">11 Novibiembre 2019</th>
+              <th scope="col">Alterar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="3">
+                <form>
+                  <div class="row">
+                    <div class="col">
+                      <label for="inputEmail4">Consultorio</label>
+
+                      <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
+                    </div>
+                    <div class="col">
+                      <label for="inputEmail4">Lugar</label>
+                      <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
+                    </div>
+                  </div>
+                </form>
+              </td>
+              <td>
+
+              </td>
+            </tr>
+            <tr>
+              <th colspan="2">Peso</th>
+              <td colspan="2"><%=item.peso %> kg</td>
+            </tr>
+            <tr>
+              <th colspan="2">Altura</th>
+              <td colspan="2"><%=item.estatura %> m</td>
+            </tr>
+            <tr>
+              <th colspan="2">Cabeza</th>
+              <td colspan="2"><%=item.cabeza%> cm</td>
+            </tr>
+            <tr>
+              <th colspan="2">IMC</th>
+              <td colspan="2"><%=item.imc%></td>
+            </tr>
+
+            <tr class="bg-<%=item.estado.color %> text-white">
+              <td>Estado</td>
+              <td colspan="3"> <%=item.estado.nombre%></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
+        
+      <%})%>
+    </div>
+
+
+    <!-- <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="3" scope="col">12 Diciembre 2019</th>
+
+          <th scope="col">Alterar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3">
+            <form>
+              <div class="row">
+                <div class="col">
+                  <label for="inputEmail4">Consultorio</label>
+
+                  <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
+                </div>
+                <div class="col">
+                  <label for="inputEmail4">Lugar</label>
+                  <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
+                </div>
+              </div>
+            </form>
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <th colspan="2">Peso</th>
+          <td colspan="2">10 kg</td>
+        </tr>
+        <tr>
+          <th colspan="2">Altura</th>
+          <td colspan="2">58 cm</td>
+        </tr>
+        <tr>
+          <th colspan="2">Cabeza</th>
+          <td colspan="2">47 cm</td>
+        </tr>
+        <tr class="bg-success text-white">
+          <td>Estado</td>
+          <td colspan="3"> Saludable</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th colspan="3" scope="col">20 Marzo 2020</th>
+
+          <th scope="col">Alterar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3">
+            <form>
+              <div class="row">
+                <div class="col">
+                  <label for="inputEmail4">Consultorio</label>
+
+                  <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
+                </div>
+                <div class="col">
+                  <label for="inputEmail4">Lugar</label>
+                  <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
+                </div>
+              </div>
+            </form>
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr>
+          <th colspan="2">Peso</th>
+          <td colspan="2"> 14 kg</td>
+        </tr>
+        <tr>
+          <th colspan="2">Altura</th>
+          <td colspan="2">120 cm</td>
+        </tr>
+        <tr>
+          <th colspan="2">Cabeza</th>
+          <td colspan="2">57 cm</td>
+        </tr>
+        <tr class="bg-warning text-white">
+          <td>Estado</td>
+          <td colspan="3"> Normal</td>
+        </tr>
+
+      </tbody>
+    </table> -->
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Nueva Consulta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST" action="/paciente/consulta">
+          <input type="number" name="idPaciente" value="<%= paciente.id%>" hidden>
+          <div class="form-group row">
+            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Peso</label>
+            <div class="col-sm-10">
+              <input type="number" name="peso" class="form-control form-control-sm" placeholder="kg." step="0.01">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Estatura</label>
+            <div class="col-sm-10">
+              <input type="number" name="estatura" class="form-control form-control-sm" placeholder="m" step="0.01">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Perimetro craneal</label>
+            <div class="col-sm-10">
+              <input type="number" name="cabeza" class="form-control form-control-sm" placeholder="Cm" value="0" step="0.01">
+            </div>
+          </div>
+          <div class="form-group row">
+              <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Edad</label>
+              <div class="col-sm-3">
+                  <label class="input-group-text">Años</label>
+
+                  <select class="custom-select" name="anualidades">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+
+                    </select>
+              </div>
+              <div class="col-sm-3">
+                  <label class="input-group-text">Meses</label>
+                  <select class="custom-select" name="meses">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+              </div>
+              <div class="col-sm-3">
+                  <label class="input-group-text">Semanas</label>
+
+                  <select class="custom-select" name="semanas">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+              </div>
+
+            </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-primary" value="Adicionar">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

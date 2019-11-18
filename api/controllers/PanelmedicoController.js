@@ -14,6 +14,13 @@ module.exports = {
             });
         });
     },
+    adicionarevision: function(req,res){
+
+
+        Revision_medica.create({})
+        sails.log("Revision Medica", req.body)
+        res.send('Nada')
+    }
   
     
   

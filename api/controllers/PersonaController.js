@@ -20,26 +20,39 @@ module.exports = {
                 expedido: req.param('expedido'),
                 sexo: req.param('sexo'),
                 rol: req.param('rol'),
-
             }
+        var rol = req.param('rol')
             // sails.log("NUEVA PERSONA", nuevaPersona)
-        var rol = req.param('rol');
+        var idMedico = req.param('idMedico');
+        var idAux = req.user.idPersona.id;
         Persona.create(nuevaPersona).fetch().exec(function(err, datoPersona) {
             if (err) {
                 return res.serverError(err)
             };
 
             sails.log("CONTROLLER PERSONA  PERSONA : ", datoPersona);
-            // console.log('persons : ' + datoPersona.nombre)
+            console.log('ID meedico : ' + idAux)
             switch (rol) {
                 case 'paciente':
                     Paciente.create({
                         idPersona: datoPersona.id
-                    }).exec(function(err, creado) {
+                    }).fetch().exec(function(err, datoPaciente) {
+
+                        sails.log('Dato Paciente',datoPaciente)
                         if (err) {
                             return res.serverError(err);
                         }
-
+                        Medico.findOne({idPersona:idAux}).exec(function(error,datoMedico){
+                            sails.log('Dato Medico',datoMedico)
+                            Control_revision.create({
+                                idPaciente: datoPaciente.id,
+                                idMedico: datoMedico.id,
+                                idConsultorio:1
+                            }).exec((error,datoControl)=>{
+                                res.redirect('/paciente/index');
+                            })
+                        });
+                        
                         // usuario = {
 
                         //     username: datoPersona.id + datoPersona.nombre,
@@ -55,7 +68,6 @@ module.exports = {
                         //     }
                         //     res.redirect('/medico/index');
                         // })
-                        res.redirect('/paciente/index');
 
                     })
                     break;

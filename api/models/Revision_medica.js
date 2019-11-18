@@ -33,13 +33,31 @@ module.exports = {
       allowNull: true
 
     },
+    anualidades: {
+      type: 'number',
+      required: false,
+      allowNull: true
+
+    },
+    meses: {
+      type: 'number',
+      required: false,
+      allowNull: true
+
+    },
+    semanas: {
+      type: 'number',
+      required: false,
+      allowNull: true
+
+    },
+
     fecha: {
       type: 'string',
       columnType: 'date',
       required: false,
       allowNull: true
     },
-
   },
 
 };

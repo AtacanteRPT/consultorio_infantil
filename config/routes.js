@@ -60,11 +60,7 @@ module.exports.routes = {
   'GET /paciente/editar/:id': 'PacienteController.edit',
   'GET /paciente/eliminar/:id': 'PacienteController.delete',
 
-  'GET /paciente/historial': {
-    view: 'paciente/historial',locals: {
-      layout: 'layouts/layout_medico'
-    }
-  },
+  'GET /paciente/historial/:id': 'PacienteController.historial',
 
 
 

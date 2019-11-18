@@ -18,8 +18,8 @@ module.exports = {
     idConsultorio: {
       model: 'consultorio'
     },
-    idRevisionMedica: {
-      model: 'revision_medica'
+    idPaciente: {
+      model: 'paciente'
     }
 
 

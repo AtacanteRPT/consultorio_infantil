@@ -5,7 +5,7 @@ module.exports = function (req, res, next) {
     if (req.isAuthenticated()) {
 
         if(req.user.rol =='medico'){
-            
+            sails.log('User Medico:',req.user)
             return next();
         }
     }
