@@ -107,14 +107,14 @@ module.exports = {
             historial.forEach(item => {
                 console.log('ITEM:',item)
                 var imc = item.peso/(item.estatura *item.estatura);
-                item.imc= imc;
-                var estado =  estado={nombre:'OBESIDAD',color:'danger'}
+                item.imc= imc.toFixed(2);
+                var estado =  estado={nombre:'OBESIDAD',color:'danger',estilo:'#F10000'}
             if(imc < 18.5){
-                estado={nombre:'BAJO',color:'warning'}
+                estado={nombre:'BAJO',color:'warning',estilo:'#F0FF01'}
             }else if(imc>=18.5 && imc<24.9){
-                estado={nombre:'NORMAL',color:'success'}
+                estado={nombre:'NORMAL',color:'success',estilo:'#1DF100'}
             }else if(imc >=25 && imc <=29.9){
-                estado={nombre:'SOBREPESO',color:'warning'}
+                estado={nombre:'SOBREPESO',color:'warning',estilo:'#F0FF01'}
             }
                 item.estado= estado;
                 auxHistorial.push(item);

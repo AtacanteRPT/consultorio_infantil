@@ -1,9 +1,7 @@
 <br>
 <div class="card bg-light">
-  <div class="card-header">Historial Paciente
+  <div class="card-header">Historial Paciente</div>
 
-
-  </div>
   <div class="card-body">
     <h5 class="card-title"> <%= paciente.idPersona.nombre%> <%= paciente.idPersona.paterno%> <%= paciente.idPersona.materno%>
       <!-- Button trigger modal -->
@@ -31,7 +29,6 @@
           <tbody>
             <tr>
               <td colspan="3">
-                <form>
                   <div class="row">
                     <div class="col">
                       <label for="inputEmail4">Consultorio</label>
@@ -43,7 +40,6 @@
                       <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
                     </div>
                   </div>
-                </form>
               </td>
               <td>
 
@@ -78,103 +74,6 @@
       <%})%>
     </div>
 
-
-    <!-- <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th colspan="3" scope="col">12 Diciembre 2019</th>
-
-          <th scope="col">Alterar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="3">
-            <form>
-              <div class="row">
-                <div class="col">
-                  <label for="inputEmail4">Consultorio</label>
-
-                  <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
-                </div>
-                <div class="col">
-                  <label for="inputEmail4">Lugar</label>
-                  <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
-                </div>
-              </div>
-            </form>
-          </td>
-          <td>
-
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">Peso</th>
-          <td colspan="2">10 kg</td>
-        </tr>
-        <tr>
-          <th colspan="2">Altura</th>
-          <td colspan="2">58 cm</td>
-        </tr>
-        <tr>
-          <th colspan="2">Cabeza</th>
-          <td colspan="2">47 cm</td>
-        </tr>
-        <tr class="bg-success text-white">
-          <td>Estado</td>
-          <td colspan="3"> Saludable</td>
-        </tr>
-
-      </tbody>
-    </table>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th colspan="3" scope="col">20 Marzo 2020</th>
-
-          <th scope="col">Alterar</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="3">
-            <form>
-              <div class="row">
-                <div class="col">
-                  <label for="inputEmail4">Consultorio</label>
-
-                  <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
-                </div>
-                <div class="col">
-                  <label for="inputEmail4">Lugar</label>
-                  <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
-                </div>
-              </div>
-            </form>
-          </td>
-          <td>
-
-          </td>
-        </tr>
-        <tr>
-          <th colspan="2">Peso</th>
-          <td colspan="2"> 14 kg</td>
-        </tr>
-        <tr>
-          <th colspan="2">Altura</th>
-          <td colspan="2">120 cm</td>
-        </tr>
-        <tr>
-          <th colspan="2">Cabeza</th>
-          <td colspan="2">57 cm</td>
-        </tr>
-        <tr class="bg-warning text-white">
-          <td>Estado</td>
-          <td colspan="3"> Normal</td>
-        </tr>
-
-      </tbody>
-    </table> -->
   </div>
 </div>
 <!-- Modal -->
@@ -271,3 +170,188 @@
     </div>
   </div>
 </div>
+
+  <canvas id="myChart"  height="100"></canvas>
+  <canvas id="myChart2"  height="100"></canvas>
+  <canvas id="myChart3"  height="100"></canvas>
+<script>
+
+  var historial = <%- JSON.stringify(historial)%>;
+var ctx = document.getElementById('myChart');
+var ctx2 = document.getElementById('myChart2');
+var ctx3 = document.getElementById('myChart3');
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels:historial.map(item => {
+                return '00/00/0000 - ' + item.estado.nombre
+            }),
+        datasets: [{
+            label: '# Indice de Masa Corporal',
+            data: historial.map(item => {
+                return  item.imc;
+            }),
+            fill: false,
+               backgroundColor: historial.map(item => {
+                return item.estado.estilo
+            }),
+            borderColor: [
+                'blue',
+            ],
+            // borderWidth: 1
+          
+
+            borderWidth: 0.5
+        }]
+    },
+    options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Historia del paciente'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Month'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'IMC = Indice de masa Corporal'
+						}
+					}]
+				}
+			}
+});
+var myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels:historial.map(item => {
+                return '00/00/0000 - ' + item.estado.nombre
+            }),
+        datasets: [{
+            label: '# Indice de Masa Corporal',
+            data: historial.map(item => {
+                return  item.imc;
+            }),
+            fill: false,
+               backgroundColor: historial.map(item => {
+                return item.estado.estilo
+            }),
+            borderColor: [
+                'blue',
+            ],
+            // borderWidth: 1
+          
+
+            borderWidth: 0.5
+        }]
+    },
+    options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Historia del paciente'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Month'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'IMC = Indice de masa Corporal'
+						}
+					}]
+				}
+			}
+});
+var myChart3= new Chart(ctx3, {
+    type: 'line',
+    data: {
+        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels:historial.map(item => {
+                return '00/00/0000 - ' + item.estado.nombre
+            }),
+        datasets: [{
+            label: '# Indice de Masa Corporal',
+            data: historial.map(item => {
+                return  item.imc;
+            }),
+            fill: false,
+               backgroundColor: historial.map(item => {
+                return item.estado.estilo
+            }),
+            borderColor: [
+                'blue',
+            ],
+            // borderWidth: 1
+            borderDash: [5, 5],
+					pointRadius: 15,
+					pointHoverRadius: 10,
+
+            borderWidth: 0.5
+        }]
+    },
+    options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Historia del paciente'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Month'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'IMC = Indice de masa Corporal'
+						}
+					}]
+				}
+			}
+});
+</script>
