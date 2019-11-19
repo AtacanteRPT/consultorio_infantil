@@ -4,7 +4,7 @@ module.exports = function (req, res, next) {
     // or if this is the last policy, the controller
     if (req.isAuthenticated()) {
 
-        if(req.user.rol =='medico'){
+        if(req.user.rol =='medico' || req.user.rol =='admin'){
             sails.log('User Medico:',req.user)
             return next();
         }

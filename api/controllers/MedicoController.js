@@ -21,10 +21,27 @@ module.exports = {
     show: async function (req, res, next) {
         try {
 
-            var value = await Medico.find(req.param('id')).populate('idPersona');
-            sails.log('Value Show',value)
-            res.view({
-                element: value[0]
+            var datoMedico = await Medico.find(req.param('id')).populate('idPersona');
+
+            var datoControl = await Control_revision.find({idMedico:datoMedico[0].id});
+
+            var pacientes = [];
+
+            async.eachSeries(datoControl, function(element, callback) {
+
+                Paciente.findOne(element.idPaciente).populate('idPersona').exec(function(err,datoPaciente){
+                    pacientes.push(datoPaciente);
+                    callback(null);
+                });
+
+            }, function(error) {
+                
+                sails.log('Pacientes',pacientes)
+                res.view({
+                    pacientes: pacientes,
+                    element: datoMedico[0]
+                });
+    
             });
         } catch (err) {
 

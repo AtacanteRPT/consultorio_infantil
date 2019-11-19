@@ -20,23 +20,57 @@
  var nutricion = require('nutrition');
 module.exports = {
     
-    index: function(req, res, next) {
-        Paciente.find().populate('idPersona').exec(function(err, list) {
-            if (err) return Error('Error');
-            return res.view({
-                result: list,
-                layout:'layouts/layout_medico'
+    index: async function(req, res, next) {
+
+        try {
+
+            var datoMedico = await Medico.find({idPersona:req.user.idPersona.id});
+
+            var datoControl = await Control_revision.find({idMedico:datoMedico[0].id});
+
+            var pacientes = [];
+
+            async.eachSeries(datoControl, function(element, callback) {
+
+                Paciente.findOne(element.idPaciente).populate('idPersona').exec(function(err,datoPaciente){
+                    pacientes.push(datoPaciente);
+                    callback(null);
+                });
+
+            }, function(error) {
+                
+                if (error) return Error('Error');
+                return res.view({
+                    result: pacientes,
+                    layout:'layouts/layout_medico'
+                });
+    
             });
-        });
+        } catch (err) {
+
+            return next(err);
+
+        }
+
+
+        // Paciente.find().populate('idPersona').exec(function(err, list) {
+        //     if (err) return Error('Error');
+        //     return res.view({
+        //         result: list,
+        //         layout:'layouts/layout_medico'
+        //     });
+        // });
     },
 
     show: async function(req, res, next) {
         try {
 
-            var value = await Paciente.find(req.param('id')).populate('idPersona');
-            sails.log('Value Show',value)
+            var datoPaciente = await Paciente.find(req.param('id')).populate('idPersona');
+
+            
+            sails.log('datoPaciente Show',datoPaciente)
             res.view({
-                element: value[0],
+                element: datoPaciente[0],
                 layout:'layouts/layout_medico'
             });
         } catch (err) {

@@ -14,11 +14,13 @@ module.exports = {
   // return res.view('pages/principal',{empresas:[]})
 
   if(req.user.rol=='medico'){
-    return res.view('pages/homepage',{layout:'layouts/layout_medico'})
+    // return res.view('pages/homepage',{layout:'layouts/layout_medico'})
+    return res.redirect('/paciente/index')
+
 
   }
   if(req.user.rol=='admin'){
-    return res.view('pages/principal')
+    return res.redirect('/medico/index')
 
   }
     // return res.view('pages/principal')
