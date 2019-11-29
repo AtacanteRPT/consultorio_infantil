@@ -66,8 +66,12 @@ module.exports = {
         required: false,
         allowNull: true
       },
-
       sexo: {
+        type: 'string',
+        required: false,
+        allowNull: true
+      },
+      direccion: {
         type: 'string',
         required: false,
         allowNull: true

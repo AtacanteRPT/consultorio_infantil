@@ -1,49 +1,104 @@
 <div class="container">
 	<br>
 	<div class="card text-dark border-success mb-3" style="max-width: 100%">
-			<div class="card-header border-success">Nuevo Paciente</div>
-			<div class="card-body border-success">
-			  <h5 class="card-title">Registrar Paciente</h5>
-			  <p class="card-text">Llenar los datos con *</p>
+		<div class="card-header border-success">Nuevo Paciente</div>
+		<div class="card-body border-success">
+			<h5 class="card-title">Registrar Paciente</h5>
+			<p class="card-text">Llenar los datos con *</p>
 
-			  <form method="POST" action="/persona/crear">
+			<form method="POST" action="/persona/crear">
 				<input type="text" name="rol" value="paciente" hidden>
 				<div class="form-group row">
-					<label  class="col-sm-2 col-form-label col-form-label-sm">Apellido Paterno</label>
+
+					<label class="col-sm-4 col-form-label col-form-label-sm">
+
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-male"></i>
+						</span>
+						Apellido Paterno</label>
 					<div class="col-sm-6">
-					<input type="text" name='paterno' class="form-control form-control-sm"  placeholder="paterno">
+						<input type="text" name='paterno' class="form-control form-control-sm" placeholder="paterno" required>
 					</div>
 				</div>
 				<div class="form-group row">
-						<label  class="col-sm-2 col-form-label col-form-label-sm">Apellido Materno</label>
-						<div class="col-sm-6">
-						<input type="text" name="materno" class="form-control form-control-sm"  placeholder="materno">
-						</div>
+					<label class="col-sm-4 col-form-label col-form-label-sm">
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-female"></i>
+						</span>
+						Apellido Materno</label>
+					<div class="col-sm-6">
+						<input type="text" name="materno" class="form-control form-control-sm" placeholder="materno" required>
+					</div>
+
 				</div>
 				<div class="form-group row">
-						<label  class="col-sm-2 col-form-label col-form-label-sm">Nombres</label>
-						<div class="col-sm-6">
-						<input type="text" name="nombre" class="form-control form-control-sm"  placeholder="nombres">
-						</div>
+					<label class="col-sm-4 col-form-label col-form-label-sm">
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-user-tie"></i>
+						</span>
+						Nombres</label>
+					<div class="col-sm-6">
+						<input type="text" name="nombre" class="form-control form-control-sm" placeholder="nombres" required>
+					</div>
 				</div>
 				<div class="form-group row">
-						<label  class="col-sm-2 col-form-label col-form-label-sm">Cedula</label>
-						<div class="col-sm-6">
-						<input type="text" name="cedula" class="form-control form-control-sm"  placeholder="ci">
-						</div>
+					<label class="col-sm-4 col-form-label col-form-label-sm">
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-user-tie"></i>
+						</span>
+						Sexo</label>
+					<div class="col-sm-6">
+						<select class="custom-select" name="sexo">
+							<option value="M">Hombre</option>
+							<option value="F">Mujer</option>
+
+						</select>
+					</div>
 				</div>
 				<div class="form-group row">
-						<label  class="col-sm-2 col-form-label col-form-label-sm">Fecha Nacimiento</label>
-						<div class="col-sm-6">
-						<input type="date" name="fechaNacimiento" class="form-control form-control-sm"  placeholder="">
-						</div>
+					<label class="col-sm-4 col-form-label col-form-label-sm">
+
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-id-card"></i>
+						</span>
+						Nro Certificado Nacimiento</label>
+					<div class="col-sm-6">
+						<input type="text" name="cedula" class="form-control form-control-sm" placeholder="####">
+					</div>
 				</div>
-		
+				<div class="form-group row">
+					<label class="col-sm-4 col-form-label col-form-label-sm">
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-calendar-alt"></i>
+						</span>
+						Fecha Nacimiento</label>
+					<div class="col-sm-6">
+						<input type="date" name="fechaNacimiento" class="form-control form-control-sm" placeholder="">
+					</div>
+				</div>
+				
+				<!-- <div class="form-group row">
+						<label  class="col-sm-4 col-form-label col-form-label-sm">Presion</label>
+						<div class="col-sm-6">
+						<input type="number" step="0.01" name="presion" class="form-control form-control-sm"  placeholder="">
+						</div>
+				</div> -->
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label col-form-label-sm">
+
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-map-marker-alt"></i>
+						</span>
+						Direccion</label>
+					<div class="col-sm-6">
+						<input type="text" name="direccion" class="form-control form-control-sm" placeholder="">
+					</div>
+				</div>
 				<button type="submit" class="btn btn-raised btn-primary">ENVIAR</button>
-		
+
 			</form>
-			</div>
-		  </div>
+		</div>
+	</div>
 	<!-- <h4 class="text-center">Registrar Medico</h4>
 	<h5 class="text-center">Llenar los datos con *</h5> -->
 

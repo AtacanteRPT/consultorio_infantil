@@ -140,7 +140,7 @@ module.exports = {
 
             historial.forEach(item => {
                 console.log('ITEM:',item)
-                var imc = item.peso/(item.estatura *item.estatura);
+                var imc = item.peso/((item.estatura/100) *(item.estatura/100));
                 item.imc= imc.toFixed(2);
                 var estado =  estado={nombre:'OBESIDAD',color:'danger',estilo:'#F10000'}
             if(imc < 18.5){

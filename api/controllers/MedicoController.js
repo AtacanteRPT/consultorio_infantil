@@ -91,5 +91,53 @@ module.exports = {
             return res.redirect('/medico/index');
         });
     },
+    pacientes:async function(req,res){
+
+        try {
+            
+            var pacientes = await Paciente.find().populate('idPersona');
+
+            var datoRevision = await Revision_medica.find();
+
+            var bajos =0;
+            var normal =0;
+            var sobrepeso=0;
+            var obeso =0;
+            pacientes.forEach(paciente => {
+                var auxConsulta = datoRevision.filter(item=>item.idPaciente==paciente.id)
+                if(auxConsulta.length >0){
+                    var consulta = auxConsulta.pop();
+                    var imc = consulta.peso/((consulta.estatura/100) *(consulta.estatura/100));
+
+                    if(imc < 18.5){
+                        bajos++;
+                    }else if(imc>=18.5 && imc<24.9){
+                        normal++;
+                    }else if(imc >=25 && imc <=29.9){
+                        sobrepeso++;
+                    }else{
+                        obeso++;
+                    }
+                }
+            });
+            
+            var estadoNutricional ={
+                bajos: bajos,
+                normal:normal,
+                sobrepeso:sobrepeso,
+                obeso:obeso
+            }
+            sails.log('Estado:',estadoNutricional)
+
+            return res.view('medico/pacientes',{
+                result: pacientes,
+                estado:estadoNutricional
+            });
+
+        } catch (error) {
+            res.serverError(error)
+        }
+
+    }
 
 };

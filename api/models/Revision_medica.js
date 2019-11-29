@@ -51,6 +51,20 @@ module.exports = {
       allowNull: true
 
     },
+    temperatura: {
+      type: 'string',
+      required: false,
+      allowNull: true
+    },presion: {
+      type: 'string',
+      required: false,
+      allowNull: true
+    },
+    alergia: {
+      type: 'string',
+      required: false,
+      allowNull: true
+    },
 
     fecha: {
       type: 'string',

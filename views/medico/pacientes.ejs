@@ -1,0 +1,174 @@
+<br>
+<div class="card bg-light ">
+	<div class="card-header">Lista de Pacientes</div>
+	<div class="card-body">
+    
+        
+            <canvas id="myChart"  height="200"></canvas>
+
+        <br>
+		<div class="container">
+		
+			<!-- <br> -->
+			<!-- <h4>Lista de Pacientes</h4> -->
+		
+		
+			<% if (result.length == 0) { %>
+				<h4>
+					0 Pacientes
+				</h4>
+				<% } else { %>
+					<table class="table table-striped table-bordered">
+						<thead class="bg-danger text-white ">
+							<th>Actividad</th>
+							<th>Nro</th>
+							<!-- <th>id</th> -->
+							<th>Nombre</th>
+							<th>Paterno</th>
+							<th>Materno</th>
+		
+							<th>Creado</th>
+							<th>Actualizado</th>
+							<th colspan="3"></th>
+						</thead>
+		
+						<tbody>
+							<% result.forEach((item, i) => { %>
+								<tr>
+									<td>
+										<a class="btn btn-raised btn-info" href="/paciente/historial/<%=item.id%>" ><span style="font-size: 1em; color: white;">
+												<i class="fas fa-history"></i>
+											</span> Historial
+										</a>
+									</td>
+									<td>
+										<%= ++i%>
+									</td>
+		
+									<!-- <td>
+										<%= item.id %>
+									</td> -->
+									<td>
+										<%= item.idPersona.nombre %>
+									</td>
+									<td>
+										<%= item.idPersona.paterno %>
+									</td>
+									<td>
+										<%= item.idPersona.materno %>
+									</td>
+									<td>
+										<%  var fecha = new Date(item.createdAt)%>
+											<%= fecha.toLocaleDateString()  %>
+									</td>
+									<td>
+										<%  var fecha = new Date(item.updatedAt)%>
+											<%= fecha.toLocaleDateString()  %>
+									</td>
+									<td>
+										<a href="/paciente/mostrar/<%= item.id %>">
+											<span style="font-size: 1em; color: green;">
+												<i class="fas fa-eye"></i>
+											</span>
+										</a>
+									</td>
+									<td>
+										<!-- <a href="/paciente/eliminar/<%= item.id %>"> -->
+											<a href="#">
+											<span style="font-size: 1em; color: red;">
+												<i class="fas fa-user-times"></i>
+											</span>
+										</a>
+									</td>
+									<td>
+										<a href="/paciente/editar/<%= item.id %>">
+											<span style="font-size: 1em; color: blue;">
+												<i class="fas fa-edit"></i>
+											</span>
+										</a>
+									</td>
+		
+								</tr>
+								<% }) %>
+						</tbody>
+					</table>
+		
+					<% } %>
+		
+						<br>
+						<a href="/paciente/crear" class="btn btn-primary btn-lg active"> <i class="fas fa-plus-circle"></i> </a>
+		</div>
+	</div>
+</div>
+<script>
+
+  var estado = <%- JSON.stringify(estado)%>;
+    var ctx = document.getElementById('myChart');
+    window.chartColors = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+    var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Bajo['+estado.bajos+']', 'Normal['+estado.normal+']', 'SobrePeso['+estado.sobrepeso+']', 'Obesidad['+estado.obeso+']'],
+        // labels:historial.map(item => {
+        //         return '00/00/0000 - ' + item.estado.nombre
+        //     }),
+        datasets: [{
+            label: '# Indice de Masa Corporal',
+            data: [estado.bajos,estado.normal,estado.sobrepeso,estado.obeso],
+            fill: false,
+               
+            borderColor: [
+                'black',
+            ],
+            // borderWidth: 1
+            backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.green,
+						window.chartColors.yellow,
+						window.chartColors.orange,
+					],
+
+            borderWidth: 2
+        }]
+    },
+    options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Estado nutricional Pacientes'
+				},
+				// tooltips: {
+				// 	mode: 'index',
+				// 	intersect: false,
+				// },
+				// hover: {
+				// 	mode: 'nearest',
+				// 	intersect: true
+				// },
+				// scales: {
+				// 	xAxes: [{
+				// 		display: true,
+				// 		scaleLabel: {
+				// 			display: true,
+				// 			labelString: 'Month'
+				// 		}
+				// 	}],
+				// 	yAxes: [{
+				// 		display: true,
+				// 		scaleLabel: {
+				// 			display: true,
+				// 			labelString: 'IMC = Indice de masa Corporal'
+				// 		}
+				// 	}]
+				// }
+			}
+});
+</script>
