@@ -6,16 +6,7 @@
  */
 
 
- var tabla =[
 
-    {
-        anualidades:5,
-        meses:6,
-        bajoPeso:12.7,
-        sobrePeso:16.9,
-        obesidad:19.0
-    }
- ]
 
  var nutricion = require('nutrition');
 module.exports = {
@@ -154,11 +145,6 @@ module.exports = {
                 auxHistorial.push(item);
             });
 
-            
-
-            // sails.log('Dato Paciente', datoPaciente);
-            // sails.log('Historial',historial)
-            
             res.view({
                 paciente: datoPaciente,
                 historial:auxHistorial,
