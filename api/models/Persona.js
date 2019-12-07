@@ -79,6 +79,11 @@ module.exports = {
       rol: {
         type: 'string'
       },
+      alergia: {
+        type: 'string',
+        required: false,
+        allowNull: true
+      },
       usuario: {
         collection: 'usuario',
         via: 'idPersona'

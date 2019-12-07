@@ -6,7 +6,41 @@
  */
 
 
+var recetas =[
+    'Leche Materna exclusiva',
+    'Leche Materna exclusiva',
+    'Leche Materna exclusiva',
+    'Leche Materna exclusiva',
+    'Leche Materna exclusiva',
+    'Leche Materna exclusiva',
+    'Leche materna exclusiva$Capsula de vitamina A$Chispitas nutricionales$Papillas de tomate$Papilla de banana$Papilla de manzana',
+    'Chispitas nutricionales$Papilla$Papilla de Sopa de verduras$Papilla de pera',
+    'Chispitas nutricionales$Papilla de camote$Papilla de zapallo$Sopa de pollo',
+    'Chispitas Nutricionales$Sopa de carne',
+    'Chispitas Nutricinales$Naranja',
+    'Chispitas Nutricionales$Quinua$Yogurt',
+    //12
+    'Capsula de vitamina A$Sopa de verduras$Sopa de arroz$Gelatina',
 
+    //18
+    'Sopa de fideo$Todas las frutas$Todas las verduras',
+    //24
+    'Capsula de vitamina A$Pescado$Todas las frutas$Todas las verduras$Sopa de verduras$Sopa Arroz$Gelatina',
+    //30
+    'Pescado$Todas las frutas$Todas las verduras$Gelatina$Leche$Yogurt',
+    //36
+    'Capsula de vitamina A$Pescado$Todas las frutas$Todas las verduras$Gelatina$Leche$Yogurt',
+    //42
+    'Pescado$Todas las frutas$Todas las verduras$Gelatina$Leche$Yogurt',
+    //48
+    'Capsula de vitamina A$Pescado$Todas las frutas$Todas las verduras$Gelatina$Leche$Yogurt',
+    //54
+    'Pescado$Todas las frutas$Todas las verduras$Gelatina$Leche$Yogurt',
+    //60
+    'Capsula de vitamina A$Pescado$Todas las frutas$Todas las verduras$Gelatina$Leche$Yogurt$Quinua'
+    
+]
+ 
 
  var nutricion = require('nutrition');
 module.exports = {
@@ -126,11 +160,21 @@ module.exports = {
 
             var historial = await Revision_medica.find({idPaciente:req.param('id')});
             var datoPaciente = await Paciente.findOne(req.param('id')).populate('idPersona');
+            var auxFecha = new Date(datoPaciente.idPersona.fechaNacimiento)
+            var meses = auxFecha.getMonth()+1;
+            var years = 2019 - auxFecha.getFullYear();
+            if(years == 0){
+                datoPaciente.receta = recetas[meses]
+            }else{
+                var mesesTotal= (parseInt(((years* 12)+meses)/6))-1
 
+                console.log('MESES',mesesTotal)
+                datoPaciente.receta = recetas[mesesTotal+11]
+            }
             var auxHistorial =[];
 
             historial.forEach(item => {
-                console.log('ITEM:',item)
+                // console.log('ITEM:',item)
                 var imc = item.peso/((item.estatura/100) *(item.estatura/100));
                 item.imc= imc.toFixed(2);
                 var estado =  estado={nombre:'OBESIDAD',color:'danger',estilo:'#F10000'}
@@ -144,6 +188,8 @@ module.exports = {
                 item.estado= estado;
                 auxHistorial.push(item);
             });
+
+            sails.log('paciente',datoPaciente)
 
             res.view({
                 paciente: datoPaciente,

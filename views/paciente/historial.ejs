@@ -3,76 +3,125 @@
   <div class="card-header">Historial Paciente</div>
 
   <div class="card-body">
-    <h5 class="card-title"> <%= paciente.idPersona.nombre%> <%= paciente.idPersona.paterno%> <%= paciente.idPersona.materno%>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-raised btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        <span style="font-size: 1em; color: white;">
-          <i class="fas fa-plus"></i>
-        </span>
-        Nueva Consulta
-      </button>
+    <h5 class="card-title">
+      <%= paciente.idPersona.nombre%>
+        <%= paciente.idPersona.paterno%>
+          <%= paciente.idPersona.materno%>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-raised btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              <span style="font-size: 1em; color: white;">
+                <i class="fas fa-plus"></i>
+              </span>
+              Nueva Consulta
+            </button>
     </h5>
 
+    <% var auxEdad = new Date(paciente.idPersona.fechaNacimiento)%>
 
-    <div class="row">
+      <div class="row">
+
+
+
+
+        <div class="col-sm-6">
+          <div class="card border-success mb-3" style="max-width: 18rem;">
+            <div class="card-header bg-transparent border-success">RECETA</div>
+            <div class="card-body text-success">
+              <h5 class="card-title">Años:
+                <%= (2019 - auxEdad.getFullYear())%> - Meses:
+                  <%=(1 +auxEdad.getMonth())%>
+              </h5>
+              <%var recetas = (paciente.receta.split('$'))%>
+                <ul>
+                  <% recetas.forEach((receta)=>{%>
+                    <li>
+                      <p class="card-text">
+                        <%= receta%>
+                      </p>
+                    </li>
+
+                    <%})%>
+                </ul>
+            </div>
+            <!-- <div class="card-footer bg-transparent border-success">Footer</div> -->
+          </div>
+        </div>
 
         <% historial.forEach((item, i) => { %>
-        
           <div class="col-sm-6">
-        <table class="table">
-          <thead>
-            <tr>
-              <th colspan="3" scope="col">11 Novibiembre 2019</th>
-              <th scope="col">Alterar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colspan="3">
-                  <div class="row">
-                    <div class="col">
-                      <label for="inputEmail4">Consultorio</label>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th colspan="3" scope="col">11 Novibiembre 2019</th>
+                  <th scope="col">Alterar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="3">
+                    <div class="row">
+                      <div class="col">
+                        <label for="inputEmail4">Consultorio</label>
 
-                      <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
+                        <input type="text" class="form-control" placeholder="Consultorio" value="A1" disabled>
+                      </div>
+                      <div class="col">
+                        <label for="inputEmail4">Lugar</label>
+                        <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
+                      </div>
                     </div>
-                    <div class="col">
-                      <label for="inputEmail4">Lugar</label>
-                      <input type="text" class="form-control" placeholder="Lugar" value="Zona Sur" disabled>
-                    </div>
-                  </div>
-              </td>
-              <td>
+                  </td>
+                  <td>
 
-              </td>
-            </tr>
-            <tr>
-              <th colspan="2">Peso</th>
-              <td colspan="2"><%=item.peso %> kg</td>
-            </tr>
-            <tr>
-              <th colspan="2">Altura</th>
-              <td colspan="2"><%=item.estatura %> m</td>
-            </tr>
-            <tr>
-              <th colspan="2">Cabeza</th>
-              <td colspan="2"><%=item.cabeza%> cm</td>
-            </tr>
-            <tr>
-              <th colspan="2">IMC</th>
-              <td colspan="2"><%=item.imc%></td>
-            </tr>
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="2">Peso</th>
+                  <td colspan="2">
+                    <%=item.peso %> kg</td>
+                </tr>
+                <tr>
+                  <th colspan="2">Altura</th>
+                  <td colspan="2">
+                    <%=item.estatura %> cm</td>
+                </tr>
+                <tr>
+                  <th colspan="2">Cabeza</th>
+                  <td colspan="2">
+                    <%=item.cabeza%> cm</td>
+                </tr>
+                <tr>
+                  <th colspan="2">IMC</th>
+                  <td colspan="2">
+                    <%=item.imc%>
+                  </td>
+                </tr>
+                <tr>
+                    <th colspan="2">Temperatura</th>
+                    <td colspan="2">
+                      <%=item.temperatura%>
+                    </td>
+                  </tr>
+                  <tr>
+                      <th colspan="2">Presion</th>
+                      <td colspan="2">
+                        <%=item.presion%>
+                      </td>
+                    </tr>
 
-            <tr class="bg-<%=item.estado.color %> text-white">
-              <td>Estado</td>
-              <td colspan="3"> <%=item.estado.nombre%></td>
-            </tr>
-          </tbody>
-        </table>
+                <tr class="bg-<%=item.estado.color %> text-white">
+                  <td>Estado</td>
+                  <td colspan="3">
+                    <%=item.estado.nombre%>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+          <%})%>
       </div>
-
-        
-      <%})%>
-    </div>
 
   </div>
 </div>
@@ -109,33 +158,28 @@
             </div>
           </div>
           <div class="form-group row">
-              <label class="col-sm-3 col-form-label col-form-label-sm">
-                <span style="font-size: 1.3em; color: black;">
-                  <i class="fas fa-thermometer-three-quarters"></i>
-                </span>
-                Temperatura</label>
-              <div class="col-sm-3">
-                <input type="number" step="0.01" name="temperatura" class="form-control form-control-sm" placeholder="">
-              </div>
-              <label class="col-sm-3 col-form-label col-form-label-sm">
-                <span style="font-size: 1.3em; color: black;">
-                  <i class="fas fa-procedures"></i>
-                </span>
-                Presion</label>
-              <div class="col-sm-3">
-                <input type="number" step="0.01" name="presion" class="form-control form-control-sm" placeholder="">
-              </div>
+            <label class="col-sm-3 col-form-label col-form-label-sm">
+              <span style="font-size: 1.3em; color: black;">
+                <i class="fas fa-thermometer-three-quarters"></i>
+              </span>
+              Temperatura</label>
+            <div class="col-sm-3">
+              <input type="number" step="0.01" name="temperatura" class="form-control form-control-sm" placeholder="">
             </div>
+            <label class="col-sm-3 col-form-label col-form-label-sm">
+              <span style="font-size: 1.3em; color: black;">
+                <i class="fas fa-procedures"></i>
+              </span>
+              Presion</label>
+            <div class="col-sm-3">
+              <input type="number" step="0.01" name="presion" class="form-control form-control-sm" placeholder="">
+            </div>
+          </div>
 
-            <div class="form-group row">
-                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Alergia</label>
-                <div class="col-sm-10">
-                  <input type="text" name="alergia" class="form-control form-control-sm" placeholder="ejemplo:chocolate" step="0.01">
-                </div>
-              </div>
+
           <div class="form-group row">
-              <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Edad</label>
-              <div class="col-sm-3">
+            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Edad</label>
+            <!-- <div class="col-sm-3">
                   <label class="input-group-text">Años</label>
 
                   <select class="custom-select" name="anualidades">
@@ -182,201 +226,217 @@
                       <option value="3">3</option>
                       <option value="4">4</option>
                     </select>
-              </div>
+              </div> -->
+            <h4>Años:
+              <%= (2019 - auxEdad.getFullYear())%> - Meses:
+                <%=(1 +auxEdad.getMonth())%>
+            </h4>
+          </div>
 
-            </div>
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" value="Adicionar">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Adicionar">
         </form>
       </div>
     </div>
   </div>
 </div>
 
-  <canvas id="myChart"  height="100"></canvas>
+<canvas id="myChart3" height="100"></canvas>
+<canvas id="myChart"  height="100"></canvas>
   <canvas id="myChart2"  height="100"></canvas>
-  <canvas id="myChart3"  height="100"></canvas>
 <script>
 
-  var historial = <%- JSON.stringify(historial)%>;
-var ctx = document.getElementById('myChart');
-var ctx2 = document.getElementById('myChart2');
-var ctx3 = document.getElementById('myChart3');
+  var historial = <%- JSON.stringify(historial) %>;
+  var ctx = document.getElementById('myChart');
+  var ctx2 = document.getElementById('myChart2');
+  var ctx3 = document.getElementById('myChart3');
 
-var myChart = new Chart(ctx, {
+
+
+  var myChart3 = new Chart(ctx3, {
     type: 'line',
     data: {
-        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        labels:historial.map(item => {
-                return '00/00/0000 - ' + item.estado.nombre
-            }),
-        datasets: [{
-            label: '# Indice de Masa Corporal',
-            data: historial.map(item => {
-                return  item.imc;
-            }),
-            fill: false,
-               backgroundColor: historial.map(item => {
-                return item.estado.estilo
-            }),
-            borderColor: [
-                'blue',
-            ],
-            // borderWidth: 1
-          
+      // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: historial.map(item => {
 
-            borderWidth: 0.5
-        }]
+        var fecha = new Date(item.createdAt)
+
+        return fecha.toLocaleDateString() + ' - ' + item.estado.nombre
+      }),
+      datasets: [{
+        label: '# Indice de Masa Corporal',
+        data: historial.map(item => {
+          return item.imc;
+        }),
+        fill: false,
+        backgroundColor: historial.map(item => {
+          return item.estado.estilo
+        }),
+        borderColor: [
+          'blue',
+        ],
+        // borderWidth: 1
+        borderDash: [5, 5],
+        pointRadius: 15,
+        pointHoverRadius: 10,
+
+        borderWidth: 0.5
+      }]
     },
     options: {
-				responsive: true,
-				title: {
-					display: true,
-					text: 'Historia del paciente'
-				},
-				tooltips: {
-					mode: 'index',
-					intersect: false,
-				},
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
-				scales: {
-					xAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Month'
-						}
-					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'IMC = Indice de masa Corporal'
-						}
-					}]
-				}
-			}
-});
-var myChart2 = new Chart(ctx2, {
-    type: 'bar',
-    data: {
-        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        labels:historial.map(item => {
-                return '00/00/0000 - ' + item.estado.nombre
-            }),
-        datasets: [{
-            label: '# Indice de Masa Corporal',
-            data: historial.map(item => {
-                return  item.imc;
-            }),
-            fill: false,
-               backgroundColor: historial.map(item => {
-                return item.estado.estilo
-            }),
-            borderColor: [
-                'blue',
-            ],
-            // borderWidth: 1
-          
-
-            borderWidth: 0.5
+      responsive: true,
+      title: {
+        display: true,
+        text: 'Historia del paciente'
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Tiempo'
+          }
+        }],
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'IMC = Indice de masa Corporal'
+          }
         }]
-    },
-    options: {
-				responsive: true,
-				title: {
-					display: true,
-					text: 'Historia del paciente'
-				},
-				tooltips: {
-					mode: 'index',
-					intersect: false,
-				},
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
-				scales: {
-					xAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Month'
-						}
-					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'IMC = Indice de masa Corporal'
-						}
-					}]
-				}
-			}
-});
-var myChart3= new Chart(ctx3, {
+      }
+    }
+  });
+  var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        labels:historial.map(item => {
-                return '00/00/0000 - ' + item.estado.nombre
-            }),
-        datasets: [{
-            label: '# Indice de Masa Corporal',
-            data: historial.map(item => {
-                return  item.imc;
-            }),
-            fill: false,
-               backgroundColor: historial.map(item => {
-                return item.estado.estilo
-            }),
-            borderColor: [
-                'blue',
-            ],
-            // borderWidth: 1
-            borderDash: [5, 5],
-					pointRadius: 15,
-					pointHoverRadius: 10,
+      // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: historial.map(item => {
+        var fecha = new Date(item.createdAt)
 
-            borderWidth: 0.5
-        }]
+        return fecha.toLocaleDateString() + ' - ' + item.estado.nombre
+      }),
+      datasets: [{
+        label: '# ',
+        data: historial.map(item => {
+          return item.temperatura;
+        }),
+        fill: false,
+        backgroundColor: historial.map(item => {
+          return item.estado.estilo
+        }),
+        borderColor: [
+          'blue',
+        ],
+        // borderWidth: 1
+
+
+        borderWidth: 0.5
+      }]
     },
     options: {
-				responsive: true,
-				title: {
-					display: true,
-					text: 'Historia del paciente'
-				},
-				tooltips: {
-					mode: 'index',
-					intersect: false,
-				},
-				hover: {
-					mode: 'nearest',
-					intersect: true
-				},
-				scales: {
-					xAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'Month'
-						}
-					}],
-					yAxes: [{
-						display: true,
-						scaleLabel: {
-							display: true,
-							labelString: 'IMC = Indice de masa Corporal'
-						}
-					}]
-				}
-			}
-});
+      responsive: true,
+      title: {
+        display: true,
+        text: 'Temperatura del Paciente'
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Tiempo'
+          }
+        }],
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Temperatura'
+          }
+        }]
+      }
+    }
+  });
+  var myChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+      // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: historial.map(item => {
+        var fecha = new Date(item.createdAt)
+
+        return fecha.toLocaleDateString() + ' - ' + item.estado.nombre
+      }),
+      datasets: [{
+        label: '# ',
+        data: historial.map(item => {
+          return item.presion;
+        }),
+        fill: false,
+        backgroundColor: historial.map(item => {
+          return item.estado.estilo
+        }),
+        borderColor: [
+          'blue',
+        ],
+        // borderWidth: 1
+
+
+        borderWidth: 0.5
+      }]
+    },
+    options: {
+      responsive: true,
+      title: {
+        display: true,
+        text: 'Presion del Paciente'
+      },
+      tooltips: {
+        mode: 'index',
+        intersect: false,
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      },
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Tiempo'
+          }
+        }],
+        yAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+            labelString: 'Presion'
+          }
+        }]
+      }
+    }
+  });
+
+  var abc = new Date();
+  abc.getFullYear();
+  abc.getMonth();
 </script>
