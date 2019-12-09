@@ -203,5 +203,82 @@ module.exports = {
             11
         }
     },
+    crearCita :async function(req, res, next) {
+        try {
+
+
+            var datoMedico = await Medico.find({idPersona:req.user.idPersona.id});
+
+            var datoControl = await Control_revision.find({idMedico:datoMedico[0].id});
+
+            var pacientes = [];
+
+            async.eachSeries(datoControl, function(element, callback) {
+
+                Paciente.findOne(element.idPaciente).populate('idPersona').exec(function(err,datoPaciente){
+                    pacientes.push(datoPaciente);
+                    callback(null);
+                });
+
+            }, function(error) {
+                
+                if (error) return Error('Error');
+                return res.view({
+                    medico: datoMedico[0],
+                    pacientes: pacientes,
+                    layout:'layouts/layout_medico'
+                });
+    
+            });
+        } catch (err) {
+
+            return next(err);
+
+        }
+    },
+    adicionarCita: function(req,res){
+
+        sails.log('AdicionarCITA',req.body)
+
+        Cita.create(req.body).exec(function(err,datoCita){
+            if(err) res.serverError(err);
+            return res.redirect('/paciente/citas');
+        });
+    },
+
+    citas: async function(req,res){
+
+        
+        try {
+
+            var datoMedico = await Medico.find({idPersona:req.user.idPersona.id});
+
+            var datoCitas = await Cita.find({idMedico:datoMedico[0].id});
+
+            var pacientes = [];
+
+            async.eachSeries(datoCitas, function(element, callback) {
+
+                Paciente.findOne(element.idPaciente).populate('idPersona').exec(function(err,datoPaciente){
+                    datoPaciente.cita = element
+                    pacientes.push(datoPaciente);
+                    callback(null);
+                });
+
+            }, function(error) {
+                
+                if (error) return Error('Error');
+                return res.view({
+                    citas: pacientes,
+                    layout:'layouts/layout_medico'
+                });
+    
+            });
+        } catch (err) {
+
+            return next(err);
+
+        }
+    }
 
 };

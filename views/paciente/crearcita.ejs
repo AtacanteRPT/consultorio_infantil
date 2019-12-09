@@ -1,0 +1,73 @@
+<div class="container">
+	<br>
+	<div class="card text-dark border-success mb-3" style="max-width: 100%">
+		<div class="card-header border-success">Nueva Cita</div>
+		<div class="card-body border-success">
+			<h5 class="card-title">Pacientes</h5>
+			<p class="card-text">Llenar los datos con *</p>
+
+			<form method="POST" action="/paciente/adicionarCita">
+				<input type="text" name="idMedico" value="<%=medico.id%>" hidden>
+				<div class="form-group row">
+						<label class="col-sm-4 col-form-label col-form-label-sm">
+							<span style="font-size: 1.3em; color: black;">
+								<i class="fas fa-calendar-alt"></i>
+							</span>
+							Asunto</label>
+						<div class="col-sm-6">
+							<input type="text" name="asunto" class="form-control form-control-sm" placeholder="">
+						</div>
+					</div>
+				<div class="form-group row">
+
+					<label class="col-sm-4 col-form-label col-form-label-sm">
+
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-calendar"></i>
+						</span>
+						Paciente</label>
+					<div class="col-sm-6">
+
+                        <select class="custom-select" name="idPaciente">
+
+                        <% pacientes.forEach((item, i) => { %>
+                            <option value="<%= item.id%>"><%=item.idPersona.paterno%> <%=item.idPersona.materno%> <%=item.idPersona.nombre%></option>
+                        <%})%>
+      
+                          </select>					
+                        </div>
+				</div>
+			
+				
+				<div class="form-group row">
+					<label class="col-sm-4 col-form-label col-form-label-sm">
+						<span style="font-size: 1.3em; color: black;">
+							<i class="fas fa-calendar-alt"></i>
+						</span>
+						Fecha</label>
+					<div class="col-sm-6">
+						<input type="date" name="fecha" class="form-control form-control-sm" placeholder="">
+					</div>
+                </div>
+                <div class="form-group row">
+                        <label class="col-sm-4 col-form-label col-form-label-sm">
+                            <span style="font-size: 1.3em; color: black;">
+                                <i class="fas fa-calendar-alt"></i>
+                            </span>
+                            Hora</label>
+                        <div class="col-sm-6">
+                            <input type="time" name="hora" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+			
+				
+				<button type="submit" class="btn btn-raised btn-primary">ENVIAR</button>
+
+			</form>
+		</div>
+	</div>
+	<!-- <h4 class="text-center">Registrar Medico</h4>
+	<h5 class="text-center">Llenar los datos con *</h5> -->
+
+
+</div>
