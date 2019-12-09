@@ -52,7 +52,9 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th colspan="3" scope="col">11 Novibiembre 2019</th>
+                    <%  var fecha = new Date(item.createdAt)%>
+                    
+                  <th colspan="3" scope="col"><%= fecha.toLocaleDateString()  %></th>
                   <th scope="col">Alterar</th>
                 </tr>
               </thead>
